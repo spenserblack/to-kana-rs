@@ -2,26 +2,6 @@ pub type Error = String;
 pub type Result = std::result::Result<String, Error>;
 
 pub fn hira(s: &str) -> Result {
-    if s.len() == 3 {
-        let mut chars = s.chars();
-        let first_char = chars.next().unwrap();
-        let next_char = chars.next().unwrap();
-        if first_char == next_char {
-            let main_hira = match hira(&s[1..]) {
-                Ok(s) => s,
-                Err(e) => return Err(e),
-            };
-            let s = format!(
-                "{}{}",
-                "っ",
-                main_hira,
-            );
-            return Ok(s);
-        } else {
-            return Err(format!("3+ char pattern not recognized: {}", s));
-        }
-    }
-
     let kana = match s {
         "a" => "あ",
         "i" => "い",
@@ -69,9 +49,30 @@ pub fn hira(s: &str) -> Result {
         "wa" => "わ",
         "wo" => "を",
         "n" => "ん",
+        s if s.len() > 2 => return add_hira_little_tsu(s),
         _ => return Err(String::from("Pattern not recognized")),
     };
     Ok(String::from(kana))
+}
+
+fn add_hira_little_tsu(s: &str) -> Result {
+    let mut chars = s.chars();
+    let first_char = chars.next().unwrap();
+    let next_char = chars.next().unwrap();
+    if first_char == next_char {
+        let main_hira = match hira(&s[1..]) {
+            Ok(s) => s,
+            Err(e) => return Err(e),
+        };
+        let s = format!(
+            "{}{}",
+            "っ",
+            main_hira,
+        );
+        return Ok(s);
+    } else {
+        return Err(format!("3+ hiragana char pattern not recognized: {}", s));
+    }
 }
 
 pub fn kata(s: &str) -> Result {
@@ -205,6 +206,7 @@ mod tests {
     #[test]
     fn hiragana_little_tsu() {
         assert_eq!(hira("tte"), Ok(String::from("って")));
+        assert_eq!(hira("sshi"), Ok(String::from("っし")));
     }
 
     #[test]
