@@ -4,7 +4,10 @@ version = "0.1.0"
 authors = ["Spenser Black <spenserblack01@gmail.com>"]
 edition = "2018"
 license = "MIT OR Apache-2.0"
+description = "Library for converting english phonetics to Japanese characters"
 readme = "README.md"
+keywords = ["Japanese", "translator", "translate", "phonetics"]
+repository = "https://github.com/spenserblack/to-kana-rs"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
