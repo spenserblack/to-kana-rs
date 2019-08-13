@@ -218,6 +218,6 @@ mod tests {
 
     #[test]
     fn katakana_little_tsu() {
-        assert_eq!(kata("tte"), Ok("っテ"));
+        assert_eq!(kata("tte"), Ok("ッテ"));
     }
 }
