@@ -33,6 +33,11 @@ pub fn kata(s: &str) -> Result {
         "hu" | "fu" => "フ",
         "he" => "ヘ",
         "ho" => "ホ",
+        "ma" => "マ",
+        "mi" => "ミ",
+        "mu" => "ム",
+        "me" => "メ",
+        "mo" => "モ",
         "n" => "ン",
         _ => return Err(String::from("Pattern not recognized")),
     };
@@ -75,7 +80,11 @@ mod tests {
         assert_eq!(kata("hu"), Ok("フ"));
         assert_eq!(kata("he"), Ok("ヘ"));
         assert_eq!(kata("ho"), Ok("ホ"));
-        panic!("No M katakana");
+        assert_eq!(kata("ma"), Ok("マ"));
+        assert_eq!(kata("mi"), Ok("ミ"));
+        assert_eq!(kata("mu"), Ok("ム"));
+        assert_eq!(kata("me"), Ok("メ"));
+        assert_eq!(kata("mo"), Ok("モ"));
         panic!("No Y katakana");
         panic!("No R katakana");
         panic!("No W katakana");
