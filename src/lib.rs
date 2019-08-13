@@ -162,6 +162,11 @@ mod tests {
     }
 
     #[test]
+    fn hiragana_little_tsu() {
+        assert_eq!(hira("tte"), Ok("って"));
+    }
+
+    #[test]
     fn to_katakana() {
         assert_eq!(kata("a"), Ok("ア"));
         assert_eq!(kata("i"), Ok("イ"));
@@ -209,5 +214,10 @@ mod tests {
         assert_eq!(kata("wa"), Ok("ワ"));
         assert_eq!(kata("wo"), Ok("ヲ"));
         assert_eq!(kata("n"), Ok("ン"));
+    }
+
+    #[test]
+    fn katakana_little_tsu() {
+        assert_eq!(kata("tte"), Ok("っテ"));
     }
 }
