@@ -75,26 +75,6 @@ pub fn hira(s: &str) -> Result {
 }
 
 pub fn kata(s: &str) -> Result {
-    if s.len() == 3 {
-        let mut chars = s.chars();
-        let first_char = chars.next().unwrap();
-        let next_char = chars.next().unwrap();
-        if first_char == next_char {
-            let main_hira = match kata(&s[1..]) {
-                Ok(s) => s,
-                Err(e) => return Err(e),
-            };
-            let s = format!(
-                "{}{}",
-                "ッ",
-                main_hira,
-            );
-            return Ok(s);
-        } else {
-            return Err(format!("3+ char pattern not recognized: {}", s));
-        }
-    }
-
     let kana = match s {
         "a" => "ア",
         "i" => "イ",
@@ -142,9 +122,30 @@ pub fn kata(s: &str) -> Result {
         "wa" => "ワ",
         "wo" => "ヲ",
         "n" => "ン",
+        s if s.len() > 2 => return add_kata_little_tsu(s),
         _ => return Err(String::from("Pattern not recognized")),
     };
     Ok(String::from(kana))
+}
+
+fn add_kata_little_tsu(s: &str) -> Result {
+    let mut chars = s.chars();
+    let first_char = chars.next().unwrap();
+    let next_char = chars.next().unwrap();
+    if first_char == next_char {
+        let main_hira = match kata(&s[1..]) {
+            Ok(s) => s,
+            Err(e) => return Err(e),
+        };
+        let s = format!(
+            "{}{}",
+            "ッ",
+            main_hira,
+        );
+        return Ok(s);
+    } else {
+        return Err(format!("3+ katakana char pattern not recognized: {}", s));
+    }
 }
 
 #[cfg(test)]
@@ -259,5 +260,6 @@ mod tests {
     #[test]
     fn katakana_little_tsu() {
         assert_eq!(kata("tte"), Ok(String::from("ッテ")));
+        assert_eq!(kata("sshi"), Ok(String::from("ッシ")));
     }
 }
