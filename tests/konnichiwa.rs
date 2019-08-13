@@ -17,6 +17,11 @@ fn hiragana_konnichiwa_per_syllable() {
 }
 
 #[test]
+fn hiragana_konnichiwa() {
+    assert_eq!("こんにちは", hira("konnitiha").unwrap());
+}
+
+#[test]
 fn katakana_konnichiwa_per_syllable() {
     let ko = kata("ko").unwrap();
     let n = kata("n").unwrap();
@@ -27,4 +32,9 @@ fn katakana_konnichiwa_per_syllable() {
     let konnichiwa = format!("{}{}{}{}{}", ko, n, ni, chi, wa);
 
     assert_eq!("コンニチハ", konnichiwa);
+}
+
+#[test]
+fn katakana_konnichiwa() {
+    assert_eq!("コンニチハ", kata("konnitiha").unwrap());
 }

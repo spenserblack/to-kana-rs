@@ -25,6 +25,38 @@ pub type Error = String;
 /// The Result type returned by this library's functions
 pub type Result = std::result::Result<String, Error>;
 
+fn syllable_divider<'a>(s: &'a str) -> Vec<&'a str> {
+    const VOWELS: [&str;5] = [
+        "a",
+        "e",
+        "i",
+        "o",
+        "u",
+    ];
+    let mut vec = Vec::new();
+    let mut start_index = 0;
+    for (end_index, c) in s.char_indices() {
+        match c {
+            'a' | 'e' | 'i' | 'o' | 'u' => {
+                vec.push(&s[start_index..=end_index]);
+                start_index = end_index + 1;
+            },
+            'n' => {
+                // if n and next char is not vowel, push n and continue
+                match s.get(end_index + 1..=end_index + 1) {
+                    Some(v) if VOWELS.contains(&v) => {},
+                    _ => {
+                        vec.push("n");
+                        start_index = end_index + 1;
+                    },
+                }
+            }
+            _ => {},
+        }
+    }
+    vec
+}
+
 /// Converts an English alphabet string to Hiragana
 ///
 /// # Example
@@ -42,58 +74,63 @@ pub type Result = std::result::Result<String, Error>;
 /// assert_eq!("っし", ssi);
 /// assert_eq!("っし", sshi);
 /// ```
-pub fn hira(s: &str) -> Result {
-    let kana = match s {
-        "a" => "あ",
-        "i" => "い",
-        "u" => "う",
-        "e" => "え",
-        "o" => "お",
-        "ka" => "か",
-        "ki" => "き",
-        "ku" => "く",
-        "ke" => "け",
-        "ko" => "こ",
-        "sa" => "さ",
-        "si" | "shi" => "し",
-        "su" => "す",
-        "se" => "せ",
-        "so" => "そ",
-        "ta" => "た",
-        "ti" | "chi" => "ち",
-        "tu" | "tsu" => "つ",
-        "te" => "て",
-        "to" => "と",
-        "na" => "な",
-        "ni" => "に",
-        "nu" => "ぬ",
-        "ne" => "ね",
-        "no" => "の",
-        "ha" => "は",
-        "hi" => "ひ",
-        "hu" => "ふ",
-        "he" => "へ",
-        "ho" => "ほ",
-        "ma" => "ま",
-        "mi" => "み",
-        "mu" => "む",
-        "me" => "め",
-        "mo" => "も",
-        "ya" => "や",
-        "yu" => "ゆ",
-        "yo" => "よ",
-        "ra" => "ら",
-        "ri" => "り",
-        "ru" => "る",
-        "re" => "れ",
-        "ro" => "ろ",
-        "wa" => "わ",
-        "wo" => "を",
-        "n" => "ん",
-        s if s.len() > 2 => return add_hira_little_tsu(s),
-        _ => return Err(String::from("Pattern not recognized")),
-    };
-    Ok(String::from(kana))
+pub fn hira<'a>(s: &'a str) -> Result {
+    let mut hiragana = String::new();
+
+    for s in syllable_divider(s) {
+        let kana = match s {
+            "a" => String::from("あ"),
+            "i" => String::from("い"),
+            "u" => String::from("う"),
+            "e" => String::from("え"),
+            "o" => String::from("お"),
+            "ka" => String::from("か"),
+            "ki" => String::from("き"),
+            "ku" => String::from("く"),
+            "ke" => String::from("け"),
+            "ko" => String::from("こ"),
+            "sa" => String::from("さ"),
+            "si" | "shi" => String::from("し"),
+            "su" => String::from("す"),
+            "se" => String::from("せ"),
+            "so" => String::from("そ"),
+            "ta" => String::from("た"),
+            "ti" | "chi" => String::from("ち"),
+            "tu" | "tsu" => String::from("つ"),
+            "te" => String::from("て"),
+            "to" => String::from("と"),
+            "na" => String::from("な"),
+            "ni" => String::from("に"),
+            "nu" => String::from("ぬ"),
+            "ne" => String::from("ね"),
+            "no" => String::from("の"),
+            "ha" => String::from("は"),
+            "hi" => String::from("ひ"),
+            "hu" => String::from("ふ"),
+            "he" => String::from("へ"),
+            "ho" => String::from("ほ"),
+            "ma" => String::from("ま"),
+            "mi" => String::from("み"),
+            "mu" => String::from("む"),
+            "me" => String::from("め"),
+            "mo" => String::from("も"),
+            "ya" => String::from("や"),
+            "yu" => String::from("ゆ"),
+            "yo" => String::from("よ"),
+            "ra" => String::from("ら"),
+            "ri" => String::from("り"),
+            "ru" => String::from("る"),
+            "re" => String::from("れ"),
+            "ro" => String::from("ろ"),
+            "wa" => String::from("わ"),
+            "wo" => String::from("を"),
+            "n" => String::from("ん"),
+            s if s.len() > 2 => add_hira_little_tsu(s)?,
+            _ => return Err(String::from("Pattern not recognized")),
+        };
+        hiragana.push_str(&kana);
+    }
+    Ok(hiragana)
 }
 
 fn add_hira_little_tsu(s: &str) -> Result {
@@ -134,57 +171,62 @@ fn add_hira_little_tsu(s: &str) -> Result {
 /// assert_eq!("ッシ", sshi);
 /// ```
 pub fn kata(s: &str) -> Result {
-    let kana = match s {
-        "a" => "ア",
-        "i" => "イ",
-        "u" => "ウ",
-        "e" => "エ",
-        "o" => "オ",
-        "ka" => "カ",
-        "ki" => "キ",
-        "ku" => "ク",
-        "ke" => "ケ",
-        "ko" => "コ",
-        "sa" => "サ",
-        "si" | "shi" => "シ",
-        "su" => "ス",
-        "se" => "セ",
-        "so" => "ソ",
-        "ta" => "タ",
-        "ti" | "chi" => "チ",
-        "tu" | "tsu" => "ツ",
-        "te" => "テ",
-        "to" => "ト",
-        "na" => "ナ",
-        "ni" => "ニ",
-        "nu" => "ヌ",
-        "ne" => "ネ",
-        "no" => "ノ",
-        "ha" => "ハ",
-        "hi" => "ヒ",
-        "hu" | "fu" => "フ",
-        "he" => "ヘ",
-        "ho" => "ホ",
-        "ma" => "マ",
-        "mi" => "ミ",
-        "mu" => "ム",
-        "me" => "メ",
-        "mo" => "モ",
-        "ya" => "ヤ",
-        "yu" => "ユ",
-        "yo" => "ヨ",
-        "ra" => "ラ",
-        "ri" => "リ",
-        "ru" => "ル",
-        "re" => "レ",
-        "ro" => "ロ",
-        "wa" => "ワ",
-        "wo" => "ヲ",
-        "n" => "ン",
-        s if s.len() > 2 => return add_kata_little_tsu(s),
-        _ => return Err(String::from("Pattern not recognized")),
-    };
-    Ok(String::from(kana))
+    let mut katakana = String::new();
+
+    for s in syllable_divider(s) {
+        let kana = match s {
+            "a" => String::from("ア"),
+            "i" => String::from("イ"),
+            "u" => String::from("ウ"),
+            "e" => String::from("エ"),
+            "o" => String::from("オ"),
+            "ka" => String::from("カ"),
+            "ki" => String::from("キ"),
+            "ku" => String::from("ク"),
+            "ke" => String::from("ケ"),
+            "ko" => String::from("コ"),
+            "sa" => String::from("サ"),
+            "si" | "shi" => String::from("シ"),
+            "su" => String::from("ス"),
+            "se" => String::from("セ"),
+            "so" => String::from("ソ"),
+            "ta" => String::from("タ"),
+            "ti" | "chi" => String::from("チ"),
+            "tu" | "tsu" => String::from("ツ"),
+            "te" => String::from("テ"),
+            "to" => String::from("ト"),
+            "na" => String::from("ナ"),
+            "ni" => String::from("ニ"),
+            "nu" => String::from("ヌ"),
+            "ne" => String::from("ネ"),
+            "no" => String::from("ノ"),
+            "ha" => String::from("ハ"),
+            "hi" => String::from("ヒ"),
+            "hu" | "fu" => String::from("フ"),
+            "he" => String::from("ヘ"),
+            "ho" => String::from("ホ"),
+            "ma" => String::from("マ"),
+            "mi" => String::from("ミ"),
+            "mu" => String::from("ム"),
+            "me" => String::from("メ"),
+            "mo" => String::from("モ"),
+            "ya" => String::from("ヤ"),
+            "yu" => String::from("ユ"),
+            "yo" => String::from("ヨ"),
+            "ra" => String::from("ラ"),
+            "ri" => String::from("リ"),
+            "ru" => String::from("ル"),
+            "re" => String::from("レ"),
+            "ro" => String::from("ロ"),
+            "wa" => String::from("ワ"),
+            "wo" => String::from("ヲ"),
+            "n" => String::from("ン"),
+            s if s.len() > 2 => return add_kata_little_tsu(s),
+            _ => return Err(String::from("Pattern not recognized")),
+        };
+        katakana.push_str(&kana);
+    }
+    Ok(katakana)
 }
 
 fn add_kata_little_tsu(s: &str) -> Result {
@@ -321,5 +363,12 @@ mod tests {
     fn katakana_little_tsu() {
         assert_eq!(kata("tte"), Ok(String::from("ッテ")));
         assert_eq!(kata("sshi"), Ok(String::from("ッシ")));
+    }
+
+    #[test]
+    fn syllable_division() {
+        let syllables = syllable_divider("konbanha");
+
+        assert_eq!(vec!["ko", "n", "ba", "n", "ha"], syllables);
     }
 }
