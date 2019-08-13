@@ -1,6 +1,59 @@
 pub type Error = String;
 pub type Result = std::result::Result<&'static str, Error>;
 
+pub fn hira(s: &str) -> Result {
+    let kana = match s {
+        "a" => "あ",
+        "i" => "い",
+        "u" => "う",
+        "e" => "え",
+        "o" => "お",
+        "ka" => "か",
+        "ki" => "き",
+        "ku" => "く",
+        "ke" => "け",
+        "ko" => "こ",
+        "sa" => "さ",
+        "si" | "shi" => "し",
+        "su" => "す",
+        "se" => "せ",
+        "so" => "そ",
+        "ta" => "た",
+        "ti" | "chi" => "ち",
+        "tu" | "tsu" => "つ",
+        "te" => "て",
+        "to" => "と",
+        "na" => "な",
+        "ni" => "に",
+        "nu" => "ぬ",
+        "ne" => "ね",
+        "no" => "の",
+        "ha" => "は",
+        "hi" => "ひ",
+        "hu" => "ふ",
+        "he" => "へ",
+        "ho" => "ほ",
+        "ma" => "ま",
+        "mi" => "み",
+        "mu" => "む",
+        "me" => "め",
+        "mo" => "も",
+        "ya" => "や",
+        "yu" => "ゆ",
+        "yo" => "よ",
+        "ra" => "ら",
+        "ri" => "り",
+        "ru" => "る",
+        "re" => "れ",
+        "ro" => "ろ",
+        "wa" => "わ",
+        "wo" => "を",
+        "n" => "ん",
+        _ => return Err(String::from("Pattern not recognized")),
+    };
+    Ok(kana)
+}
+
 pub fn kata(s: &str) -> Result {
     let kana = match s {
         "a" => "ア",
@@ -57,6 +110,56 @@ pub fn kata(s: &str) -> Result {
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    #[test]
+    fn to_hiragana() {
+        assert_eq!(hira("a"), Ok("あ"));
+        assert_eq!(hira("i"), Ok("い"));
+        assert_eq!(hira("u"), Ok("う"));
+        assert_eq!(hira("e"), Ok("え"));
+        assert_eq!(hira("o"), Ok("お"));
+        assert_eq!(hira("ka"), Ok("か"));
+        assert_eq!(hira("ki"), Ok("き"));
+        assert_eq!(hira("ku"), Ok("く"));
+        assert_eq!(hira("ke"), Ok("け"));
+        assert_eq!(hira("ko"), Ok("こ"));
+        assert_eq!(hira("sa"), Ok("さ"));
+        assert_eq!(hira("si"), Ok("し"));
+        assert_eq!(hira("su"), Ok("す"));
+        assert_eq!(hira("se"), Ok("せ"));
+        assert_eq!(hira("so"), Ok("そ"));
+        assert_eq!(hira("ta"), Ok("た"));
+        assert_eq!(hira("ti"), Ok("ち"));
+        assert_eq!(hira("tu"), Ok("つ"));
+        assert_eq!(hira("te"), Ok("て"));
+        assert_eq!(hira("to"), Ok("と"));
+        assert_eq!(hira("na"), Ok("な"));
+        assert_eq!(hira("ni"), Ok("に"));
+        assert_eq!(hira("nu"), Ok("ぬ"));
+        assert_eq!(hira("ne"), Ok("ね"));
+        assert_eq!(hira("no"), Ok("の"));
+        assert_eq!(hira("ha"), Ok("は"));
+        assert_eq!(hira("hi"), Ok("ひ"));
+        assert_eq!(hira("hu"), Ok("ふ"));
+        assert_eq!(hira("he"), Ok("へ"));
+        assert_eq!(hira("ho"), Ok("ほ"));
+        assert_eq!(hira("ma"), Ok("ま"));
+        assert_eq!(hira("mi"), Ok("み"));
+        assert_eq!(hira("mu"), Ok("む"));
+        assert_eq!(hira("me"), Ok("め"));
+        assert_eq!(hira("mo"), Ok("も"));
+        assert_eq!(hira("ya"), Ok("や"));
+        assert_eq!(hira("yu"), Ok("ゆ"));
+        assert_eq!(hira("yo"), Ok("よ"));
+        assert_eq!(hira("ra"), Ok("ら"));
+        assert_eq!(hira("ri"), Ok("り"));
+        assert_eq!(hira("ru"), Ok("る"));
+        assert_eq!(hira("re"), Ok("れ"));
+        assert_eq!(hira("ro"), Ok("ろ"));
+        assert_eq!(hira("wa"), Ok("わ"));
+        assert_eq!(hira("wo"), Ok("を"));
+        assert_eq!(hira("n"), Ok("ん"));
+    }
 
     #[test]
     fn to_katakana() {
