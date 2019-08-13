@@ -1,5 +1,6 @@
 # to-kana
 [![Crates.io](https://img.shields.io/crates/v/to-kana)](https://crates.io/crates/to-kana)
+[![docs.rs](https://docs.rs/to-kana/badge.svg)](https://docs.rs/to-kana/)
 ![Crates.io](https://img.shields.io/crates/d/to-kana)
 ![Crates.io](https://img.shields.io/crates/l/to-kana)
 
