@@ -18,7 +18,7 @@ pub fn hira(s: &str) -> Result {
             );
             return Ok(s);
         } else {
-            return Err(String::from("3-character pattern not recognized"));
+            return Err(format!("3+ char pattern not recognized: {}", s));
         }
     }
 
@@ -91,7 +91,7 @@ pub fn kata(s: &str) -> Result {
             );
             return Ok(s);
         } else {
-            return Err(String::from("3-character pattern not recognized"));
+            return Err(format!("3+ char pattern not recognized: {}", s));
         }
     }
 
