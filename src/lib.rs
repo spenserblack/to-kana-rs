@@ -8,6 +8,7 @@ pub fn kata(s: &str) -> Result {
         "u" => "ウ",
         "e" => "エ",
         "o" => "オ",
+        "n" => "ン",
         _ => return Err(String::from("Pattern not recognized")),
     };
     Ok(kana)
@@ -33,5 +34,6 @@ mod tests {
         panic!("No Y katakana");
         panic!("No R katakana");
         panic!("No W katakana");
+        assert_eq!(kata("n"), Ok("ン"));
     }
 }
