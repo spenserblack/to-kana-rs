@@ -1,6 +1,47 @@
+//! English lettering to Kana converter.
+//!
+//! # Example
+//!
+//! ```
+//! use to_kana::{
+//!     hira, // Hiragana
+//!     kata, // Katakana
+//! };
+//!
+//! let e = hira("e").unwrap();
+//! let ka = hira("ka").unwrap();
+//! let no = kata("no").unwrap();
+//! let tte = hira("tte").unwrap();
+//!
+//! assert_eq!("え", e);
+//! assert_eq!("か", ka);
+//! assert_eq!("ノ", no);
+//! assert_eq!("って", tte);
+//! ```
+
+/// The type inside `Result::Err` returned by this library's functions
 pub type Error = String;
+
+/// The Result type returned by this library's functions
 pub type Result = std::result::Result<String, Error>;
 
+/// Converts an English alphabet string to Hiragana
+///
+/// # Example
+///
+/// ```
+/// use to_kana::hira;
+///
+/// let si = hira("si").unwrap();
+/// let shi = hira("shi").unwrap();
+/// let ssi = hira("ssi").unwrap();
+/// let sshi = hira("sshi").unwrap();
+///
+/// assert_eq!("し", si);
+/// assert_eq!("し", shi);
+/// assert_eq!("っし", ssi);
+/// assert_eq!("っし", sshi);
+/// ```
 pub fn hira(s: &str) -> Result {
     let kana = match s {
         "a" => "あ",
@@ -75,6 +116,23 @@ fn add_hira_little_tsu(s: &str) -> Result {
     }
 }
 
+/// Converts an English alphabet string to Katakana
+///
+/// # Example
+///
+/// ```
+/// use to_kana::kata;
+///
+/// let si = kata("si").unwrap();
+/// let shi = kata("shi").unwrap();
+/// let ssi = kata("ssi").unwrap();
+/// let sshi = kata("sshi").unwrap();
+///
+/// assert_eq!("シ", si);
+/// assert_eq!("シ", shi);
+/// assert_eq!("ッシ", ssi);
+/// assert_eq!("ッシ", sshi);
+/// ```
 pub fn kata(s: &str) -> Result {
     let kana = match s {
         "a" => "ア",
