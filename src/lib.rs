@@ -85,9 +85,16 @@ mod tests {
         assert_eq!(kata("mu"), Ok("ム"));
         assert_eq!(kata("me"), Ok("メ"));
         assert_eq!(kata("mo"), Ok("モ"));
-        panic!("No Y katakana");
-        panic!("No R katakana");
-        panic!("No W katakana");
+        assert_eq!(kata("ya"), Ok("ヤ"));
+        assert_eq!(kata("yu"), Ok("ユ"));
+        assert_eq!(kata("yo"), Ok("ヨ"));
+        assert_eq!(kata("ra"), Ok("ラ"));
+        assert_eq!(kata("ri"), Ok("リ"));
+        assert_eq!(kata("ru"), Ok("ル"));
+        assert_eq!(kata("re"), Ok("レ"));
+        assert_eq!(kata("ro"), Ok("ロ"));
+        assert_eq!(kata("wa"), Ok("ワ"));
+        assert_eq!(kata("wo"), Ok("ヲ"));
         assert_eq!(kata("n"), Ok("ン"));
     }
 }
