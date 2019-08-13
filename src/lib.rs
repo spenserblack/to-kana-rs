@@ -2,6 +2,26 @@ pub type Error = String;
 pub type Result = std::result::Result<String, Error>;
 
 pub fn hira(s: &str) -> Result {
+    if s.len() == 3 {
+        let mut chars = s.chars();
+        let first_char = chars.next().unwrap();
+        let next_char = chars.next().unwrap();
+        if first_char == next_char {
+            let main_hira = match hira(&s[1..]) {
+                Ok(s) => s,
+                Err(e) => return Err(e),
+            };
+            let s = format!(
+                "{}{}",
+                "っ",
+                main_hira,
+            );
+            return Ok(s);
+        } else {
+            return Err(String::from("3-character pattern not recognized"));
+        }
+    }
+
     let kana = match s {
         "a" => "あ",
         "i" => "い",
