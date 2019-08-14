@@ -1,6 +1,10 @@
 # Changelog
 
 ## [Unreleased](https://github.com/spenserblack/to-kana-rs/compare/v0.1.0...master)
+### Added
+- Diacritics
+- Digraphs
+
 ### Changed
 - `hira` and `kata` to accept full words, not just syllables
 
