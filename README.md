@@ -14,13 +14,9 @@ use to_kana::{
     kata, // Katakana
 };
 
-let ko = hira("ko").unwrap();
-let n = hira("n").unwrap();
-let ni = hira("ni").unwrap();
-let chi = hira("ti").unwrap(); // same as hira("chi")
+// は is pronounced "wa" in this context, but is usually pronounced "ha"
+let hello = hira("konnichiha").unwrap(); // こんにちは
+let world = kata("wa-rudo").unwrap(); // ワールド
 
-// は is prounounced "wa" in "こんにちは", but is normally pronounced "ha"
-let wa = hira("ha").unwrap();
-
-println!("{}{}{}{}{}", ko, n, ni, chi, wa); // こんにちは
+println!("{}{}", hello, world);
 ```
