@@ -310,7 +310,6 @@ mod tests {
         assert_eq!(hira("do"), Ok(String::from("ど")));
         assert_eq!(hira("dhi"), Ok(String::from("でぃ")));
         assert_eq!(hira("dhu"), Ok(String::from("でゅ")));
-        assert_eq!(hira("dhe"), Ok(String::from("でぇ")));
         assert_eq!(hira("na"), Ok(String::from("な")));
         assert_eq!(hira("ni"), Ok(String::from("に")));
         assert_eq!(hira("nu"), Ok(String::from("ぬ")));
@@ -424,7 +423,6 @@ mod tests {
         assert_eq!(kata("do"), Ok(String::from("ド")));
         assert_eq!(kata("dhi"), Ok(String::from("デェ")));
         assert_eq!(kata("dhu"), Ok(String::from("ディ")));
-        assert_eq!(kata("dhe"), Ok(String::from("デョ")));
         assert_eq!(kata("na"), Ok(String::from("ナ")));
         assert_eq!(kata("ni"), Ok(String::from("ニ")));
         assert_eq!(kata("nu"), Ok(String::from("ヌ")));
