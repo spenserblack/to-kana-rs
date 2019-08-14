@@ -496,7 +496,7 @@ mod tests {
         assert_eq!(kata("de"), Ok(String::from("デ")));
         assert_eq!(kata("do"), Ok(String::from("ド")));
         assert_eq!(kata("dhi"), Ok(String::from("ディ")));
-        assert_eq!(kata("thu"), Ok(String::from("デュ")));
+        assert_eq!(kata("dhu"), Ok(String::from("デュ")));
         assert_eq!(kata("na"), Ok(String::from("ナ")));
         assert_eq!(kata("ni"), Ok(String::from("ニ")));
         assert_eq!(kata("nu"), Ok(String::from("ヌ")));
