@@ -26,12 +26,13 @@ pub type Error = String;
 pub type Result = std::result::Result<String, Error>;
 
 fn syllable_divider<'a>(s: &'a str) -> Vec<&'a str> {
-    const VOWELS: [&str;5] = [
+    const VOWELS: [&str;6] = [
         "a",
         "e",
         "i",
         "o",
         "u",
+        "y", // Sometimes
     ];
     let mut vec = Vec::new();
     let mut start_index = 0;
