@@ -1,6 +1,8 @@
 # Changelog
 
 ## [Unreleased](https://github.com/spenserblack/to-kana-rs/compare/v0.2.0...master)
+### Changed
+- Improve failed pattern match error message
 
 ## [0.2.0] 2019/08/13 11:41
 ### Added

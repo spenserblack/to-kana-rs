@@ -197,7 +197,7 @@ pub fn hira<'a>(s: &'a str) -> Result {
             "wo" => String::from("を"),
             "n" => String::from("ん"),
             s if s.len() > 2 => add_hira_little_tsu(s)?,
-            _ => return Err(String::from("Pattern not recognized")),
+            _ => return Err(format!("Pattern not recognized: {:?}", s)),
         };
         hiragana.push_str(&kana);
     }
@@ -363,7 +363,7 @@ pub fn kata(s: &str) -> Result {
             "wo" => String::from("ヲ"),
             "n" => String::from("ン"),
             s if s.len() > 2 => return add_kata_little_tsu(s),
-            _ => return Err(String::from("Pattern not recognized")),
+            _ => return Err(format!("Pattern not recognized: {:?}", s)),
         };
         katakana.push_str(&kana);
     }
