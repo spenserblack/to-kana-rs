@@ -5,8 +5,8 @@ use to_kana::{
 
 #[test]
 fn hello_world_mixed() {
-    let hello = hira("konnichiha").unwrap();
-    let world = kata("wa-rudo").unwrap();
+    let hello = hira("konnichiha,").unwrap();
+    let world = kata("wa-rudo!").unwrap();
 
-    assert_eq!("こんにちはワールド", format!("{}{}", hello, world));
+    assert_eq!("こんにちは、ワールド！", format!("{}{}", hello, world));
 }
