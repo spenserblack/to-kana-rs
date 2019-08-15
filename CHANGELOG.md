@@ -1,6 +1,8 @@
 # Changelog
 
 ## [Unreleased](https://github.com/spenserblack/to-kana-rs/compare/v0.2.0...master)
+### Added
+- "、"', "。", "！", and "？" to recognized patterns
 ### Changed
 - Improve failed pattern match error message
 
