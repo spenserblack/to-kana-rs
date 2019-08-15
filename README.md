@@ -15,8 +15,8 @@ use to_kana::{
 };
 
 // は is pronounced "wa" in this context, but is usually pronounced "ha"
-let hello = hira("konnichiha").unwrap(); // こんにちは
-let world = kata("wa-rudo").unwrap(); // ワールド
+let hello = hira("konnichiha,").unwrap(); // こんにちは、
+let world = kata("wa-rudo!").unwrap(); // ワールド！
 
-println!("{}{}", hello, world);
+println!("{}{}", hello, world); // こんにちは、ワールド！
 ```
