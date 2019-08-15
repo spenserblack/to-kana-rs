@@ -9,3 +9,8 @@ fn no_apostrophe() {
 fn apostrophe() {
     assert_eq!(hira("shin'ichi").unwrap(), "しんいち");
 }
+
+#[test]
+fn double_n_and_apostrophe() {
+    assert_eq!(hira("shin'nichi").unwrap(), "しんにち");
+}
