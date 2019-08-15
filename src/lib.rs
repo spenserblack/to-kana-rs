@@ -42,6 +42,11 @@ fn syllable_divider<'a>(s: &'a str) -> Vec<&'a str> {
                 vec.push(&s[start_index..=end_index]);
                 start_index = end_index + 1;
             },
+            '\'' => {
+                // Works as long as preceding character is 'n'
+                // If it wasn't, then it's an invalid pattern
+                start_index = end_index + 1;
+            },
             'n' => {
                 // if n and next char is not vowel, push n and continue
                 match s.get(end_index + 1..=end_index + 1) {
