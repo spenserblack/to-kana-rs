@@ -38,7 +38,7 @@ fn syllable_divider<'a>(s: &'a str) -> Vec<&'a str> {
     let mut start_index = 0;
     for (end_index, c) in s.char_indices() {
         match c {
-            '-' | 'a' | 'e' | 'i' | 'o' | 'u' | ',' => {
+            '-' | 'a' | 'e' | 'i' | 'o' | 'u' | ',' | '.' | '!' | '?' => {
                 vec.push(&s[start_index..=end_index]);
                 start_index = end_index + 1;
             },
@@ -81,6 +81,9 @@ pub fn hira<'a>(s: &'a str) -> Result {
     for s in syllable_divider(s) {
         let kana = match s {
             "," => String::from("、"),
+            "." => String::from("。"),
+            "!" => String::from("！"),
+            "?" => String::from("？"),
             "-" => String::from("ー"),
             "a" => String::from("あ"),
             "i" => String::from("い"),
@@ -244,6 +247,9 @@ pub fn kata(s: &str) -> Result {
     for s in syllable_divider(s) {
         let kana = match s {
             "," => String::from("、"),
+            "." => String::from("。"),
+            "!" => String::from("！"),
+            "?" => String::from("？"),
             "-" => String::from("ー"),
             "a" => String::from("ア"),
             "i" => String::from("イ"),
@@ -646,5 +652,23 @@ mod tests {
     fn comma() {
         assert_eq!(Ok(String::from("、")), hira(","));
         assert_eq!(Ok(String::from("、")), kata(","));
+    }
+
+    #[test]
+    fn period() {
+        assert_eq!(Ok(String::from("。")), hira("."));
+        assert_eq!(Ok(String::from("。")), kata("."));
+    }
+
+    #[test]
+    fn exclamation_point() {
+        assert_eq!(Ok(String::from("！")), hira("!"));
+        assert_eq!(Ok(String::from("！")), kata("!"));
+    }
+
+    #[test]
+    fn question_mark() {
+        assert_eq!(Ok(String::from("？")), hira("?"));
+        assert_eq!(Ok(String::from("？")), kata("?"));
     }
 }
