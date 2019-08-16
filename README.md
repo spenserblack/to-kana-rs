@@ -31,7 +31,7 @@ let world = kata("wa-rudo!").unwrap();
 println!("{}{}", hello, world); // こんにちは、ワールド！
 ```
 
-### As Binary
+### From Command Line
 ```bash
 # Install
 make install
