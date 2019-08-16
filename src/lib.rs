@@ -374,7 +374,7 @@ pub fn kata(s: &str) -> Result {
             "wa" => String::from("ワ"),
             "wo" => String::from("ヲ"),
             "n" => String::from("ン"),
-            s if s.len() > 2 => return add_kata_little_tsu(s),
+            s if s.len() > 2 => add_kata_little_tsu(s)?,
             _ => return Err(format!("Pattern not recognized: {:?}", s)),
         };
         katakana.push_str(&kana);
