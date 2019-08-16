@@ -39,7 +39,7 @@ println!("{}{}", hello, world); // こんにちは、ワールド！
 ### From Command Line
 ```bash
 # Install
-make install
+cargo install to-kana
 
 # Get Help
 to-kana -h
