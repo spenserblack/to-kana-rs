@@ -8,6 +8,7 @@
 Converts English lettering to Kana.
 
 ## Basic Usage
+### As Library
 ```rust
 use to_kana::ToKana;
 
@@ -28,4 +29,21 @@ let hello = hira("konnichiha,").unwrap();
 let world = kata("wa-rudo!").unwrap();
 
 println!("{}{}", hello, world); // こんにちは、ワールド！
+```
+
+### As Binary
+```bash
+# Install
+make install
+
+# Get Help
+to-kana -h
+to-kana hira -h
+to-kana kata -h
+
+# Convert to Hiragana
+to-kana hira <STRING>
+
+# Convert to Katakana
+to-kana kata <STRING>
 ```
