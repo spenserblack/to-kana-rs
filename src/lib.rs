@@ -1,6 +1,15 @@
 //! English lettering to Kana converter.
 //!
-//! # Example
+//! # Examples
+//!
+//! ```
+//! use to_kana::ToKana;
+//!
+//! let hello = "konnichiha,".hira().unwrap(); // Works on &str
+//! let world = String::from("wa-rudo!").kata().unwrap(); // And String!
+//!
+//! assert_eq!("こんにちは、ワールド！", format!("{}{}", hello, world));
+//! ```
 //!
 //! ```
 //! use to_kana::{
@@ -8,15 +17,10 @@
 //!     kata, // Katakana
 //! };
 //!
-//! let e = hira("e").unwrap();
-//! let ka = hira("ka").unwrap();
-//! let no = kata("no").unwrap();
-//! let tte = hira("tte").unwrap();
+//! let hello = hira("konnichiha,").unwrap();
+//! let world = kata("wa-rudo!").unwrap();
 //!
-//! assert_eq!("え", e);
-//! assert_eq!("か", ka);
-//! assert_eq!("ノ", no);
-//! assert_eq!("って", tte);
+//! assert_eq!("こんにちは、ワールド！", format!("{}{}", hello, world));
 //! ```
 
 mod to_kana_trait;
