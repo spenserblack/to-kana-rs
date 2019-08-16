@@ -5,6 +5,11 @@
 ![Crates.io](https://img.shields.io/crates/dv/to-kana)
 ![Crates.io](https://img.shields.io/crates/l/to-kana)
 
+![GitHub Release Date](https://img.shields.io/github/release-date/spenserblack/to-kana-rs)
+![GitHub commits since latest release](https://img.shields.io/github/commits-since/spenserblack/to-kana-rs/latest)
+![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/spenserblack/to-kana-rs)
+![GitHub repo size](https://img.shields.io/github/repo-size/spenserblack/to-kana-rs)
+
 Converts English lettering to Kana.
 
 ## Basic Usage
