@@ -12,6 +12,7 @@
 
 ### Fixed
 - Dropped characters when Katakana conversion would contains "ッ"
+- Missing syllables for "cha", "chu", "che", and "cho"
 
 ## [0.2.0] 2019/08/13 11:41
 ### Added
