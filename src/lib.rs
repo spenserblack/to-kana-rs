@@ -19,6 +19,9 @@
 //! assert_eq!("って", tte);
 //! ```
 
+mod to_kana_trait;
+pub use to_kana_trait::ToKana;
+
 /// The type inside `Result::Err` returned by this library's functions
 pub type Error = String;
 
