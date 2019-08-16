@@ -87,7 +87,7 @@ fn syllable_divider<'a>(s: &'a str) -> Vec<&'a str> {
 /// assert_eq!("っし", ssi);
 /// assert_eq!("っし", sshi);
 /// ```
-pub fn hira<'a>(s: &'a str) -> Result {
+pub fn hira(s: &str) -> Result {
     let mut hiragana = String::new();
 
     for s in syllable_divider(s) {
