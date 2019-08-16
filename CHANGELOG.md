@@ -10,6 +10,9 @@
 ### Changed
 - Improve failed pattern match error message
 
+### Fixed
+- Dropped characters when Katakana conversion would contains "ッ"
+
 ## [0.2.0] 2019/08/13 11:41
 ### Added
 - Diacritics
