@@ -141,6 +141,10 @@ pub fn hira<'a>(s: &'a str) -> Result {
             "tu" | "tsu" => String::from("つ"),
             "te" => String::from("て"),
             "to" => String::from("と"),
+            "cha" => String::from("ちゃ"),
+            "chu" => String::from("ちゅ"),
+            "che" => String::from("ちぇ"),
+            "cho" => String::from("ちょ"),
             "thi" => String::from("てぃ"),
             "thu" => String::from("てゅ"),
             "da" => String::from("だ"),
@@ -307,6 +311,10 @@ pub fn kata(s: &str) -> Result {
             "tu" | "tsu" => String::from("ツ"),
             "te" => String::from("テ"),
             "to" => String::from("ト"),
+            "cha" => String::from("チャ"),
+            "chu" => String::from("チュ"),
+            "che" => String::from("チェ"),
+            "cho" => String::from("チョ"),
             "thi" => String::from("ティ"),
             "thu" => String::from("テュ"),
             "da" => String::from("ダ"),
@@ -452,6 +460,10 @@ mod tests {
         assert_eq!(hira("tu"), Ok(String::from("つ")));
         assert_eq!(hira("te"), Ok(String::from("て")));
         assert_eq!(hira("to"), Ok(String::from("と")));
+        assert_eq!(hira("cha"), Ok(String::from("ちゃ")));
+        assert_eq!(hira("chu"), Ok(String::from("ちゅ")));
+        assert_eq!(hira("che"), Ok(String::from("ちぇ")));
+        assert_eq!(hira("cho"), Ok(String::from("ちょ")));
         assert_eq!(hira("thi"), Ok(String::from("てぃ")));
         assert_eq!(hira("thu"), Ok(String::from("てゅ")));
         assert_eq!(hira("da"), Ok(String::from("だ")));
@@ -573,6 +585,10 @@ mod tests {
         assert_eq!(kata("tu"), Ok(String::from("ツ")));
         assert_eq!(kata("te"), Ok(String::from("テ")));
         assert_eq!(kata("to"), Ok(String::from("ト")));
+        assert_eq!(kata("cha"), Ok(String::from("チャ")));
+        assert_eq!(kata("chu"), Ok(String::from("チュ")));
+        assert_eq!(kata("che"), Ok(String::from("チェ")));
+        assert_eq!(kata("cho"), Ok(String::from("チョ")));
         assert_eq!(kata("thi"), Ok(String::from("ティ")));
         assert_eq!(kata("thu"), Ok(String::from("テュ")));
         assert_eq!(kata("da"), Ok(String::from("ダ")));
