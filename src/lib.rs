@@ -387,14 +387,14 @@ fn add_kata_little_tsu(s: &str) -> Result {
     let first_char = chars.next().unwrap();
     let next_char = chars.next().unwrap();
     if first_char == next_char {
-        let main_hira = match kata(&s[1..]) {
+        let main_kata = match kata(&s[1..]) {
             Ok(s) => s,
             Err(e) => return Err(e),
         };
         let s = format!(
             "{}{}",
             "ッ",
-            main_hira,
+            main_kata,
         );
         return Ok(s);
     } else {
