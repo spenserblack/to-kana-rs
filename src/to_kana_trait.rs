@@ -4,8 +4,11 @@ use crate::{
     Result,
 };
 
+/// Trait to make a type translatable to kana
 pub trait ToKana {
+    /// Changes the implementing type to Hiragana
     fn hira(&self) -> Result;
+    /// Changes the implementing type to Katakana
     fn kata(&self) -> Result;
 }
 
