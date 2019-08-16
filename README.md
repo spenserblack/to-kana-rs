@@ -9,14 +9,23 @@ Converts English lettering to Kana.
 
 ## Basic Usage
 ```rust
+use to_kana::ToKana;
+
+let hello = "konnichiha,".hira().unwrap(); // Works on &str
+let world = String::from("wa-rudo!").kata().unwrap(); // And String!
+
+println!("{}{}", hello, world)); // こんにちは、ワールド！
+```
+Or, if you prefer the old way
+```rust
 use to_kana::{
     hira, // Hiragana
     kata, // Katakana
 };
 
 // は is pronounced "wa" in this context, but is usually pronounced "ha"
-let hello = hira("konnichiha,").unwrap(); // こんにちは、
-let world = kata("wa-rudo!").unwrap(); // ワールド！
+let hello = hira("konnichiha,").unwrap();
+let world = kata("wa-rudo!").unwrap();
 
 println!("{}{}", hello, world); // こんにちは、ワールド！
 ```
