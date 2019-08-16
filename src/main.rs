@@ -27,7 +27,6 @@ fn main() {
             .arg(str_arg.clone());
         let app = App::new("to-kana")
             .version("0.3.0")
-            .author("Spenser Black <spenserblack01@gmail.com>")
             .about("Converts English lettering to kana")
             .subcommand(hira_subcommand)
             .subcommand(kata_subcommand);
