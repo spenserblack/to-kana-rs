@@ -3,6 +3,9 @@
 ## [Unreleased](https://github.com/spenserblack/to-kana-rs/compare/v0.2.0...master)
 ### Added
 - "、"', "。", "！", and "？" to recognized patterns
+- `'` as a separator between n and a vowel to let them be read as 2 characters instead of 1
+- Trait for converting a type to Hiragana and Katakana, implemented on `&str` and `String`
+
 ### Changed
 - Improve failed pattern match error message
 
