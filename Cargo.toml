@@ -8,9 +8,6 @@ description = "Library for converting english phonetics to Japanese characters"
 readme = "README.md"
 keywords = [
     "Japanese",
-    "translator",
-    "translate",
-    "phonetics",
     "hiragana",
     "katakana",
 ]
