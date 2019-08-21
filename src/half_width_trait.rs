@@ -7,9 +7,15 @@ pub trait HalfWidth {
 
 impl HalfWidth for &str {
     fn half_width(self) -> Result {
-        let mut half_width = String::new();
-        let utf16: Vec<u16> = self.encode_utf16().collect();
-        Ok(String::from(""))
+        let utf16: Vec<u16> = self.encode_utf16().map(|u16char| {
+            match u16char {
+                0x3042 ... 0x304A if u16char % 2 == 0 => {
+                    u16char - 0x0001
+                },
+                _ => u16char,
+            }
+        }).collect();
+        Ok(String::from_utf16(&utf16).unwrap())
     }
 }
 impl HalfWidth for String {
