@@ -23,8 +23,10 @@
 //! assert_eq!("こんにちは、ワールド！", format!("{}{}", hello, world));
 //! ```
 
+pub use half_width_trait::HalfWidth;
 pub use to_kana_trait::ToKana;
 
+mod half_width_trait;
 mod to_kana_trait;
 
 /// The type inside `Result::Err` returned by this library's functions
