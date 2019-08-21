@@ -23,8 +23,9 @@
 //! assert_eq!("こんにちは、ワールド！", format!("{}{}", hello, world));
 //! ```
 
-mod to_kana_trait;
 pub use to_kana_trait::ToKana;
+
+mod to_kana_trait;
 
 /// The type inside `Result::Err` returned by this library's functions
 pub type Error = String;
