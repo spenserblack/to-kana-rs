@@ -1,6 +1,9 @@
 # Changelog
 
 ## [Unreleased](https://github.com/spenserblack/to-kana-rs/compare/v0.3.0...master)
+### Added
+- "x_" notation for little kana (e.g. `"xa" => "ゃ"`)
+- `SmallKana` trait to convert string types to small kana
 
 ## [0.3.0] 2019/08/16 11:12
 ### Added
