@@ -215,6 +215,10 @@ pub fn hira(s: &str) -> Result {
             "wa" => "わ",
             "wo" => "を",
             "n" => "ん",
+            s if s.starts_with('x') && s.len() > 1 => {
+                hiragana.push_str(&hira(&s[1..]).small()?);
+                continue;
+            },
             s if s.len() > 2 => {
                 hiragana.push_str(&add_hira_little_tsu(s)?);
                 continue;
@@ -388,6 +392,10 @@ pub fn kata(s: &str) -> Result {
             "wa" => "ワ",
             "wo" => "ヲ",
             "n" => "ン",
+            s if s.starts_with('x') && s.len() > 1 => {
+                katakana.push_str(&kata(&s[1..]).small()?);
+                continue;
+            },
             s if s.len() > 2 => {
                 katakana.push_str(&add_kata_little_tsu(s)?);
                 continue;
@@ -430,6 +438,11 @@ mod tests {
         assert_eq!(hira("u"), Ok(String::from("う")));
         assert_eq!(hira("e"), Ok(String::from("え")));
         assert_eq!(hira("o"), Ok(String::from("お")));
+        assert_eq!(hira("xa"), Ok(String::from("ぁ")));
+        assert_eq!(hira("xi"), Ok(String::from("ぃ")));
+        assert_eq!(hira("xu"), Ok(String::from("ぅ")));
+        assert_eq!(hira("xe"), Ok(String::from("ぇ")));
+        assert_eq!(hira("xo"), Ok(String::from("ぉ")));
         assert_eq!(hira("ka"), Ok(String::from("か")));
         assert_eq!(hira("ki"), Ok(String::from("き")));
         assert_eq!(hira("ku"), Ok(String::from("く")));
@@ -467,6 +480,7 @@ mod tests {
         assert_eq!(hira("ta"), Ok(String::from("た")));
         assert_eq!(hira("ti"), Ok(String::from("ち")));
         assert_eq!(hira("tu"), Ok(String::from("つ")));
+        assert_eq!(hira("xtu"), Ok(String::from("っ")));
         assert_eq!(hira("te"), Ok(String::from("て")));
         assert_eq!(hira("to"), Ok(String::from("と")));
         assert_eq!(hira("cha"), Ok(String::from("ちゃ")));
@@ -529,6 +543,9 @@ mod tests {
         assert_eq!(hira("ya"), Ok(String::from("や")));
         assert_eq!(hira("yu"), Ok(String::from("ゆ")));
         assert_eq!(hira("yo"), Ok(String::from("よ")));
+        assert_eq!(hira("xya"), Ok(String::from("ゃ")));
+        assert_eq!(hira("xyu"), Ok(String::from("ゅ")));
+        assert_eq!(hira("xyo"), Ok(String::from("ょ")));
         assert_eq!(hira("ra"), Ok(String::from("ら")));
         assert_eq!(hira("ri"), Ok(String::from("り")));
         assert_eq!(hira("ru"), Ok(String::from("る")));
@@ -555,6 +572,11 @@ mod tests {
         assert_eq!(kata("u"), Ok(String::from("ウ")));
         assert_eq!(kata("e"), Ok(String::from("エ")));
         assert_eq!(kata("o"), Ok(String::from("オ")));
+        assert_eq!(kata("xa"), Ok(String::from("ァ")));
+        assert_eq!(kata("xi"), Ok(String::from("ィ")));
+        assert_eq!(kata("xu"), Ok(String::from("ゥ")));
+        assert_eq!(kata("xe"), Ok(String::from("ェ")));
+        assert_eq!(kata("xo"), Ok(String::from("ォ")));
         assert_eq!(kata("ka"), Ok(String::from("カ")));
         assert_eq!(kata("ki"), Ok(String::from("キ")));
         assert_eq!(kata("ku"), Ok(String::from("ク")));
@@ -592,6 +614,7 @@ mod tests {
         assert_eq!(kata("ta"), Ok(String::from("タ")));
         assert_eq!(kata("ti"), Ok(String::from("チ")));
         assert_eq!(kata("tu"), Ok(String::from("ツ")));
+        assert_eq!(kata("xtu"), Ok(String::from("ッ")));
         assert_eq!(kata("te"), Ok(String::from("テ")));
         assert_eq!(kata("to"), Ok(String::from("ト")));
         assert_eq!(kata("cha"), Ok(String::from("チャ")));
@@ -654,6 +677,9 @@ mod tests {
         assert_eq!(kata("ya"), Ok(String::from("ヤ")));
         assert_eq!(kata("yu"), Ok(String::from("ユ")));
         assert_eq!(kata("yo"), Ok(String::from("ヨ")));
+        assert_eq!(kata("xya"), Ok(String::from("ャ")));
+        assert_eq!(kata("xyu"), Ok(String::from("ュ")));
+        assert_eq!(kata("xyo"), Ok(String::from("ョ")));
         assert_eq!(kata("ra"), Ok(String::from("ラ")));
         assert_eq!(kata("ri"), Ok(String::from("リ")));
         assert_eq!(kata("ru"), Ok(String::from("ル")));
