@@ -34,6 +34,7 @@ impl SmallKana for Result {
 #[cfg(test)]
 mod tests {
     use super::*;
+    use crate::ToKana;
 
     #[test]
     fn aiueo_hira() {
@@ -57,7 +58,7 @@ mod tests {
 
     #[test]
     fn unrecognized_pattern() {
-        if let Ok(_) = "unrecognized".small() {
+        if let Ok(_) = "unrecognized".hira().small() {
             panic!("Unrecognized pattern was Ok");
         }
     }
