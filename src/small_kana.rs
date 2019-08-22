@@ -1,6 +1,23 @@
 use crate::Error;
 use crate::Result;
 
+/// Defines a type as being able to convert to small kana.
+///
+/// # Examples
+///
+/// ```
+/// use to_kana::SmallKana;
+///
+/// assert_eq!("ゃゅょ", "やゆよ".small().unwrap());
+/// ```
+///
+/// It also works on `to_kana::Result`!
+///
+/// ```
+/// use to_kana::{ToKana, SmallKana};
+///
+/// assert_eq!("ゃゅょ", "yayuyo".hira().small().unwrap());
+/// ```
 pub trait SmallKana {
     fn small(self) -> Result;
 }
