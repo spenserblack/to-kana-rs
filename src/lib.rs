@@ -215,6 +215,10 @@ pub fn hira(s: &str) -> Result {
             "wa" => "わ",
             "wo" => "を",
             "n" => "ん",
+            s if s.starts_with('x') && s.len() > 1 => {
+                hiragana.push_str(&hira(&s[1..]).small()?);
+                continue;
+            },
             s if s.len() > 2 => {
                 hiragana.push_str(&add_hira_little_tsu(s)?);
                 continue;
@@ -388,6 +392,10 @@ pub fn kata(s: &str) -> Result {
             "wa" => "ワ",
             "wo" => "ヲ",
             "n" => "ン",
+            s if s.starts_with('x') && s.len() > 1 => {
+                katakana.push_str(&kata(&s[1..]).small()?);
+                continue;
+            },
             s if s.len() > 2 => {
                 katakana.push_str(&add_kata_little_tsu(s)?);
                 continue;
