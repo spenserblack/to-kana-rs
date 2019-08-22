@@ -24,9 +24,11 @@
 //! ```
 
 pub use to_kana_trait::ToKana;
+pub use half_width::HalfWidth;
 pub use small_kana::SmallKana;
 
 mod to_kana_trait;
+mod half_width;
 mod small_kana;
 
 /// The type inside `Result::Err` returned by this library's functions
