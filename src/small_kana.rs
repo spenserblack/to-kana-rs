@@ -43,4 +43,11 @@ mod tests {
     fn yayuyo_hira() {
         assert_eq!("ゃゅょ", "やゆよ".small().unwrap());
     }
+
+    #[test]
+    fn unrecognized_pattern() {
+        if let Ok(_) = "unrecognized".small() {
+            panic!("Unrecognized pattern was Ok");
+        }
+    }
 }
