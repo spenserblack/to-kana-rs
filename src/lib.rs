@@ -24,8 +24,10 @@
 //! ```
 
 pub use to_kana_trait::ToKana;
+pub use small_kana::SmallKana;
 
 mod to_kana_trait;
+mod small_kana;
 
 /// The type inside `Result::Err` returned by this library's functions
 pub type Error = String;
