@@ -45,6 +45,16 @@ mod tests {
     }
 
     #[test]
+    fn aiueo_kata() {
+        assert_eq!("ァィゥェォ", "アイウエオ".small().unwrap());
+    }
+
+    #[test]
+    fn yayuyo_kata() {
+        assert_eq!("ャュョ", "ヤユヨ".small().unwrap());
+    }
+
+    #[test]
     fn unrecognized_pattern() {
         if let Ok(_) = "unrecognized".small() {
             panic!("Unrecognized pattern was Ok");
