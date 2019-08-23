@@ -2,7 +2,6 @@ use crate::{
     has_softened_diacritic,
     has_hardened_diacritic,
 };
-use crate::Error;
 use crate::Result;
 
 /// Defines a type as being able to convert to half-width katakana.

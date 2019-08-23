@@ -1,4 +1,3 @@
-use crate::Error;
 use crate::Result;
 
 /// Defines a type as being able to convert to small kana.
