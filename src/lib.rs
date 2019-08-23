@@ -193,6 +193,11 @@ pub fn hira(s: &str) -> Result {
             "fi" => "ふぃ",
             "fe" => "ふぇ",
             "fo" => "ふぉ",
+            "va" => "ゔぁ",
+            "vi" => "ゔぃ",
+            "vu" => "ゔ",
+            "ve" => "ゔぇ",
+            "vo" => "ゔぉ",
             "ma" => "ま",
             "mi" => "み",
             "mu" => "む",
@@ -370,6 +375,11 @@ pub fn kata(s: &str) -> Result {
             "fi" => "フィ",
             "fe" => "フェ",
             "fo" => "フォ",
+            "va" => "ヴァ",
+            "vi" => "ヴィ",
+            "vu" => "ヴ",
+            "ve" => "ヴェ",
+            "vo" => "ヴォ",
             "ma" => "マ",
             "mi" => "ミ",
             "mu" => "ム",
@@ -532,6 +542,11 @@ mod tests {
         assert_eq!(hira("fi"), Ok(String::from("ふぃ")));
         assert_eq!(hira("fe"), Ok(String::from("ふぇ")));
         assert_eq!(hira("fo"), Ok(String::from("ふぉ")));
+        assert_eq!(hira("va"), Ok(String::from("ゔぁ")));
+        assert_eq!(hira("vi"), Ok(String::from("ゔぃ")));
+        assert_eq!(hira("vu"), Ok(String::from("ゔ")));
+        assert_eq!(hira("ve"), Ok(String::from("ゔぇ")));
+        assert_eq!(hira("vo"), Ok(String::from("ゔぉ")));
         assert_eq!(hira("ma"), Ok(String::from("ま")));
         assert_eq!(hira("mi"), Ok(String::from("み")));
         assert_eq!(hira("mu"), Ok(String::from("む")));
@@ -666,6 +681,11 @@ mod tests {
         assert_eq!(kata("fi"), Ok(String::from("フィ")));
         assert_eq!(kata("fe"), Ok(String::from("フェ")));
         assert_eq!(kata("fo"), Ok(String::from("フォ")));
+        assert_eq!(kata("va"), Ok(String::from("ヴァ")));
+        assert_eq!(kata("vi"), Ok(String::from("ヴィ")));
+        assert_eq!(kata("vu"), Ok(String::from("ヴ")));
+        assert_eq!(kata("ve"), Ok(String::from("ヴェ")));
+        assert_eq!(kata("vo"), Ok(String::from("ヴォ")));
         assert_eq!(kata("ma"), Ok(String::from("マ")));
         assert_eq!(kata("mi"), Ok(String::from("ミ")));
         assert_eq!(kata("mu"), Ok(String::from("ム")));
