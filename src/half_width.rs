@@ -1,3 +1,7 @@
+use crate::{
+    has_softened_diacritic,
+    has_hardened_diacritic,
+};
 use crate::Error;
 use crate::Result;
 
@@ -7,7 +11,21 @@ pub trait HalfWidth {
 
 impl HalfWidth for &str {
     fn half_width(self) -> Result {
-        Ok(String::new())
+        let mut s = String::new();
+        for c in self.chars() {
+            let has_softened_diacritic = has_softened_diacritic(&c);
+            let has_hardened_diacritic = has_hardened_diacritic(&c);
+            let c = match c {
+                _ => c,
+            };
+            s.push(c);
+            if has_softened_diacritic {
+                s.push('ﾞ');
+            } else if has_hardened_diacritic {
+                s.push('ﾟ');
+            }
+        }
+        Ok(s)
     }
 }
 impl HalfWidth for String {
@@ -30,5 +48,10 @@ mod tests {
     #[test]
     fn half_width_aiueo() {
         assert_eq!("ｱｲｳｴｵ", "アイウエオ".half_width().unwrap());
+    }
+
+    #[test]
+    fn half_width_kakikukeko() {
+        assert_eq!("ｶﾞｷﾞｸﾞｹﾞｺﾞ", "ガギグゲゴ".half_width().unwrap());
     }
 }
