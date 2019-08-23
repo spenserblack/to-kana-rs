@@ -4,6 +4,10 @@
 ### Added
 - "x_" notation for little kana (e.g. `"xa" => "ゃ"`)
 - `SmallKana` trait to convert string types to small kana
+- `HalfWidth` trait to convert full-width Katakana to half-width
+
+### Fixed
+- Lack of support for "ヴ" and "ゔ"
 
 ## [0.3.0] 2019/08/16 11:12
 ### Added
