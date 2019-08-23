@@ -22,6 +22,16 @@
 //!
 //! assert_eq!("こんにちは、ワールド！", format!("{}{}", hello, world));
 //! ```
+//!
+//! ```
+//! use to_kana::{
+//!     ToKana,
+//!     SmallKana,
+//!     HalfWidth,
+//! };
+//!
+//! assert_eq!("ｬ", "ya".kata().small().half_width().unwrap());
+//! ```
 
 pub use to_kana_trait::ToKana;
 pub use half_width::HalfWidth;
