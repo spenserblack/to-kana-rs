@@ -63,4 +63,7 @@ to-kana hira <STRING>
 
 # Convert to Katakana
 to-kana kata <STRING>
+
+# Convert to small, half-width Katakana
+to-kana --small kata yo --half
 ```
