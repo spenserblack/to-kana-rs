@@ -44,7 +44,7 @@ use to_kana::{
     HalfWidth,
 };
 
-// Not to be confused with "ャ" or "ﾔ"
+// Not to be confused with "ヤ", "ャ" or "ﾔ"
 assert_eq!("ｬ", "ya".kata().small().half_width().unwrap());
 ```
 
