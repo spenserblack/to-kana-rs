@@ -13,6 +13,8 @@ keywords = [
 ]
 categories = [
     "command-line-utilities",
+    "localization",
+    "value-formatting",
 ]
 repository = "https://github.com/spenserblack/to-kana-rs"
 
