@@ -102,7 +102,6 @@ impl HalfWidth for Result {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use crate::ToKana;
 
     #[test]
     fn half_width_aiueo() {
