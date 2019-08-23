@@ -36,6 +36,17 @@ let world = kata("wa-rudo!").unwrap();
 println!("{}{}", hello, world); // こんにちは、ワールド！
 ```
 
+What if you don't want to just convert to Kana? What if you want to convert to small, half-width Katakana? You can!
+```rust
+use to_kana::{
+    ToKana,
+    SmallKana,
+    HalfWidth,
+};
+
+assert_eq!("ｬ", "ya".kata().small().half_width().unwrap());
+```
+
 ### From Command Line
 ```bash
 # Install
