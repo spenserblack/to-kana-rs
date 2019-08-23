@@ -16,6 +16,17 @@ impl HalfWidth for &str {
             let has_softened_diacritic = has_softened_diacritic(&c);
             let has_hardened_diacritic = has_hardened_diacritic(&c);
             let c = match c {
+                'ー' => 'ｰ',
+                'ア' => 'ｱ',
+                'イ' => 'ｲ',
+                'ウ' | 'ヴ' => 'ｳ',
+                'エ' => 'ｴ',
+                'オ' => 'ｵ',
+                'カ' | 'ガ' => 'ｶ',
+                'キ' | 'ギ' => 'ｷ',
+                'ク' | 'グ' => 'ｸ',
+                'ケ' | 'ゲ' => 'ｹ',
+                'コ' | 'ゴ' => 'ｺ',
                 _ => c,
             };
             s.push(c);
