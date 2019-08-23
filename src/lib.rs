@@ -24,9 +24,11 @@
 //! ```
 
 pub use to_kana_trait::ToKana;
+pub use half_width::HalfWidth;
 pub use small_kana::SmallKana;
 
 mod to_kana_trait;
+mod half_width;
 mod small_kana;
 
 /// The type inside `Result::Err` returned by this library's functions
@@ -34,6 +36,26 @@ pub type Error = String;
 
 /// The Result type returned by this library's functions
 pub type Result = std::result::Result<String, Error>;
+
+const KATAKANA_SOFTENED_DIACRITICS: [char;21] = [
+    'ガ', 'ギ', 'グ', 'ゲ', 'ゴ',
+    'ザ', 'ジ', 'ズ', 'ゼ', 'ゾ',
+    'ダ', 'ヂ', 'ヅ', 'デ', 'ド',
+    'バ', 'ビ', 'ブ', 'ベ', 'ボ',
+    'ヴ',
+];
+
+const KATAKANA_HARDENED_DIACRITICS: [char;5] = [
+    'パ', 'ピ', 'プ', 'ペ', 'ポ',
+];
+
+fn has_softened_diacritic(c: &char) -> bool {
+    KATAKANA_SOFTENED_DIACRITICS.contains(c)
+}
+
+fn has_hardened_diacritic(c: &char) -> bool {
+    KATAKANA_HARDENED_DIACRITICS.contains(c)
+}
 
 fn syllable_divider<'a>(s: &'a str) -> Vec<&'a str> {
     const VOWELS: [&str;6] = [
