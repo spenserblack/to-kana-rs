@@ -5,6 +5,15 @@ use crate::{
 use crate::Error;
 use crate::Result;
 
+/// Defines a type as being able to convert to half-width katakana.
+///
+/// # Example
+///
+/// ```
+/// use to_kana::{ToKana, HalfWidth};
+///
+/// assert_eq!("ﾜｰﾙﾄﾞ", "wa-rudo".kata().half_width().unwrap());
+/// ```
 pub trait HalfWidth {
     fn half_width(self) -> Result;
 }
