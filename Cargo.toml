@@ -22,3 +22,8 @@ repository = "https://github.com/spenserblack/to-kana-rs"
 
 [dependencies]
 clap = "2.33"
+
+[badges]
+is-it-maintained-issue-resolution = { repository = "spenserblack/to-kana-rs" }
+is-it-maintained-open-issues = { repository = "spenserblack/to-kana-rs" }
+maintenance = { status = "actively-developed" }
