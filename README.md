@@ -11,6 +11,7 @@
 ![GitHub repo size](https://img.shields.io/github/repo-size/spenserblack/to-kana-rs)
 
 Converts English lettering to Kana.
+Please see the [wiki](github.com/spenserblack/to-kana-rs/wiki) to get supported inputs.
 
 ## Basic Usage
 ### As Library
