@@ -1,4 +1,6 @@
 //! English lettering to Kana converter.
+//! Please see the [wiki](https://github.com/spenserblack/to-kana-rs/wiki) to
+//! view supported inputs.
 //!
 //! # Examples
 //!
