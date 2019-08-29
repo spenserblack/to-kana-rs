@@ -23,6 +23,13 @@ repository = "https://github.com/spenserblack/to-kana-rs"
 [dependencies]
 clap = "2.33"
 
+[dev-dependencies]
+criterion = "0.3"
+
+[[bench]]
+name = "to_kana_benchmark"
+harness = false
+
 [badges]
 is-it-maintained-issue-resolution = { repository = "spenserblack/to-kana-rs" }
 is-it-maintained-open-issues = { repository = "spenserblack/to-kana-rs" }
