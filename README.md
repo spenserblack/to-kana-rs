@@ -9,8 +9,6 @@
 
 ![GitHub Release Date](https://img.shields.io/github/release-date/spenserblack/to-kana-rs)
 ![GitHub commits since latest release](https://img.shields.io/github/commits-since/spenserblack/to-kana-rs/latest)
-![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/spenserblack/to-kana-rs)
-![GitHub repo size](https://img.shields.io/github/repo-size/spenserblack/to-kana-rs)
 
 Converts English lettering to Kana.
 Please see the [wiki](https://github.com/spenserblack/to-kana-rs/wiki) to get supported inputs.
