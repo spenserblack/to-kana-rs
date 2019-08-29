@@ -10,6 +10,10 @@ fn small_kana_conversion(s: &str) -> to_kana::Result {
     s.small()
 }
 
+fn half_width_conversion(s: &str) -> to_kana::Result {
+    s.half_width()
+}
+
 fn hira_benchmark(c: &mut Criterion) {
     c.bench_function(
         "a hira",
@@ -59,5 +63,28 @@ fn small_kana_benchmark(c: &mut Criterion) {
     );
 }
 
-criterion_group!(benches, hira_benchmark, kata_benchmark, small_kana_benchmark);
+fn half_width_kana_benchmark(c: &mut Criterion) {
+    c.bench_function(
+        "ヤ half-width",
+        |b| b.iter(|| half_width_conversion(black_box("ヤ"))),
+    );
+    c.bench_function(
+        "アイウエオ half-width",
+        |b| b.iter(|| half_width_conversion(black_box("アイウエオ"))),
+    );
+    c.bench_function(
+        "コレハナガイストリング! half-width",
+        |b| b.iter(|| half_width_conversion(black_box(
+            "コレハナガイストリング!"
+        ))),
+    );
+}
+
+criterion_group!(
+    benches,
+    hira_benchmark,
+    kata_benchmark,
+    small_kana_benchmark,
+    half_width_kana_benchmark,
+);
 criterion_main!(benches);
