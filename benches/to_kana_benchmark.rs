@@ -15,6 +15,10 @@ fn hira_benchmark(c: &mut Criterion) {
         "aiueo hira",
         |b| b.iter(|| hira(black_box("aiueo"))),
     );
+    c.bench_function(
+        "konnichiha hira",
+        |b| b.iter(|| hira(black_box("konnichiha"))),
+    );
 }
 
 fn kata_benchmark(c: &mut Criterion) {
@@ -25,6 +29,10 @@ fn kata_benchmark(c: &mut Criterion) {
     c.bench_function(
         "aiueo kata",
         |b| b.iter(|| kata(black_box("aiueo"))),
+    );
+    c.bench_function(
+        "konnichiha kata",
+        |b| b.iter(|| kata(black_box("konnichiha"))),
     );
 }
 
