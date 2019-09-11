@@ -39,7 +39,7 @@ fn main() {
             .arg(half_arg)
             .arg(str_arg.clone());
         let app = App::new("to-kana")
-            .version("0.4.0")
+            .version("0.5.0")
             .about("Converts English lettering to kana")
             .subcommand(hira_subcommand)
             .subcommand(kata_subcommand)
