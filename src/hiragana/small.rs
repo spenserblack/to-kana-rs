@@ -14,7 +14,7 @@ pub fn small(hiragana: &mut String, characters: &mut Enumerate<Chars>) -> Result
         Some((_, 'e')) => hiragana.push('ぇ'),
         Some((_, 'o')) => hiragana.push('ぉ'),
         Some((i, c)) => return Err(format!("character at {} not allowed: {}", i, c)),
-        None => return Err(String::from("'x' must be followed by a vowel")),
+        None => return Err(String::from("Unexpected end of string")),
     }
     Ok(())
 }
