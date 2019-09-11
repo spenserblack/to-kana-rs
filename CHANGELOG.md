@@ -4,7 +4,7 @@
 
 ## [0.4.0] 2019/08/23 15:02
 ### Added
-- "x_" notation for little kana (e.g. `"xya" => "ゃ"`)
+- "x\_" notation for little kana (e.g. `"xya" => "ゃ"`)
 - `SmallKana` trait to convert string types to small kana
 - `HalfWidth` trait to convert full-width Katakana to half-width
 - Options for small or half-width kana to command-line utility
