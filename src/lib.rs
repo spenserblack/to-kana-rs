@@ -82,18 +82,7 @@ fn syllable_divider<'a>(s: &'a str) -> Vec<&'a str> {
         "u",
         "y", // Sometimes
     ];
-    // const DIGITS: [char;10] = [
-    //     '1',
-    //     '2',
-    //     '3',
-    //     '4',
-    //     '5',
-    //     '6',
-    //     '7',
-    //     '8',
-    //     '9',
-    //     '0',
-    // ];
+
     let mut vec = Vec::new();
     let mut start_index = 0;
     for (end_index, c) in s.char_indices() {
