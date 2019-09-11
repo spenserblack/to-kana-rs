@@ -4,6 +4,10 @@ use super::{
     syllable_divider,
 };
 
+use k::k;
+
+mod k;
+
 /// Converts an English alphabet string to Hiragana
 ///
 /// # Example
@@ -25,7 +29,7 @@ pub fn hira(s: &str) -> Result {
     let mut hiragana = String::new();
     let mut characters = s.chars().enumerate();
 
-    for (i, c) in characters {
+    while let Some((i, c)) = characters.next() {
         match c {
             ',' => hiragana.push('、'),
             '.' => hiragana.push('。'),
@@ -47,6 +51,7 @@ pub fn hira(s: &str) -> Result {
             'u' => hiragana.push('う'),
             'e' => hiragana.push('え'),
             'o' => hiragana.push('お'),
+            'k' => k(&mut hiragana, &mut characters)?,
             'n' => hiragana.push('ん'),
             // "ka" => "か",
             // "ki" => "き",
