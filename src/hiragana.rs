@@ -59,6 +59,7 @@ pub fn hira(s: &str) -> Result {
             }
         }
         match c {
+            '\'' => {},
             ',' => hiragana.push('、'),
             '.' => hiragana.push('。'),
             '!' => hiragana.push('！'),
