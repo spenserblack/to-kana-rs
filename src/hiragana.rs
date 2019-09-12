@@ -10,6 +10,7 @@ use small::small;
 
 mod k;
 mod g;
+mod s;
 mod small;
 
 /// Converts an English alphabet string to Hiragana
@@ -57,6 +58,7 @@ pub fn hira(s: &str) -> Result {
             'o' => hiragana.push('お'),
             'k' => k(&mut hiragana, &mut characters)?,
             'g' => g(&mut hiragana, &mut characters)?,
+            's' => s::s(&mut hiragana, &mut characters)?,
             'n' => hiragana.push('ん'),
             'x' => small(&mut hiragana, &mut characters)?,
             // "ka" => "か",
