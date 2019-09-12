@@ -1,6 +1,7 @@
 use std::iter::{
     Enumerate,
     Iterator,
+    Peekable,
 };
 use std::str::Chars;
 
@@ -22,7 +23,7 @@ pub const YO: char = 'ょ';
 pub const TSU: char = 'っ';
 
 
-pub fn small(hiragana: &mut String, characters: &mut Enumerate<Chars>) -> Result<(), Error> {
+pub fn small(hiragana: &mut String, characters: &mut Peekable<Enumerate<Chars>>) -> Result<(), Error> {
     match characters.next() {
         Some((_, 'a')) => hiragana.push(A),
         Some((_, 'i')) => hiragana.push(I),
@@ -50,7 +51,7 @@ pub fn small(hiragana: &mut String, characters: &mut Enumerate<Chars>) -> Result
     Ok(())
 }
 
-pub fn small_y(hiragana: &mut String, characters: &mut Enumerate<Chars>) -> Result<(), Error> {
+pub fn small_y(hiragana: &mut String, characters: &mut Peekable<Enumerate<Chars>>) -> Result<(), Error> {
     match characters.next() {
         Some((_, 'a')) => hiragana.push(YA),
         Some((_, 'u')) => hiragana.push(YU),

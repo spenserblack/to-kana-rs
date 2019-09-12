@@ -18,6 +18,7 @@ mod j;
 mod t;
 mod c;
 mod d;
+mod n;
 mod small;
 
 /// Converts an English alphabet string to Hiragana
@@ -39,7 +40,7 @@ mod small;
 /// ```
 pub fn hira(s: &str) -> Result {
     let mut hiragana = String::new();
-    let mut characters = s.chars().enumerate();
+    let mut characters = s.chars().enumerate().peekable();
 
     while let Some((i, c)) = characters.next() {
         match c {
@@ -71,7 +72,7 @@ pub fn hira(s: &str) -> Result {
             't' => t::t(&mut hiragana, &mut characters)?,
             'c' => c::c(&mut hiragana, &mut characters)?,
             'd' => d::d(&mut hiragana, &mut characters)?,
-            'n' => hiragana.push('ん'),
+            'n' => n::n(&mut hiragana, &mut characters)?,
             'x' => small(&mut hiragana, &mut characters)?,
             // "ka" => "か",
             // "ki" => "き",
