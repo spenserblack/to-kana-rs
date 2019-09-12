@@ -73,6 +73,14 @@ fn has_hardened_diacritic(c: &char) -> bool {
     KATAKANA_HARDENED_DIACRITICS.contains(c)
 }
 
+fn unexpected_char_error(i: usize, c: char) -> Error {
+    format!("Unexpected char at {}: {}", i, c)
+}
+
+fn unexpected_end_of_string() -> Error {
+    String::from("Unexpected end of string")
+}
+
 fn syllable_divider<'a>(s: &'a str) -> Vec<&'a str> {
     const VOWELS: [&str;6] = [
         "a",

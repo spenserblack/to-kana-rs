@@ -2,6 +2,8 @@ use super::{
     Result,
     SmallKana,
     syllable_divider,
+    unexpected_char_error,
+    unexpected_end_of_string,
 };
 
 use k::k;
@@ -183,7 +185,7 @@ pub fn hira(s: &str) -> Result {
             //     hiragana.push_str(&add_hira_little_tsu(s)?);
             //     continue;
             // },
-            _ => return Err(format!("Invalid character at index {}: {}", i, c)),
+            _ => return Err(unexpected_char_error(i, c)),
         }
     }
     Ok(hiragana)

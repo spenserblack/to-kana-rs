@@ -6,7 +6,11 @@ use std::str::Chars;
 
 use crate::Error;
 
-use super::small::{self, small_y};
+use super::{
+    unexpected_char_error,
+    unexpected_end_of_string,
+    small::{self, small_y},
+};
 
 pub fn s(hiragana: &mut String, characters: &mut Enumerate<Chars>) -> Result<(), Error> {
     match characters.next() {
@@ -23,12 +27,12 @@ pub fn s(hiragana: &mut String, characters: &mut Enumerate<Chars>) -> Result<(),
                 Some((_, 'o')) => hiragana.push(small::YO),
                 Some((_, 'e')) => hiragana.push(small::E),
                 Some((_, 'i')) => {},
-                Some((i, c)) => return Err(format!("Unexpected char at {}: {}", i, c)),
-                None => return Err(String::from("Unexpected end of string")),
+                Some((i, c)) => return Err(unexpected_char_error(i, c)),
+                None => return Err(unexpected_end_of_string()),
             }
         }
-        Some((i, c)) => return Err(format!("character at {} not allowed: {}", i, c)),
-        None => return Err(String::from("'s' must be followed by a vowel")),
+        Some((i, c)) => return Err(unexpected_char_error(i, c)),
+        None => return Err(unexpected_end_of_string()),
     }
     Ok(())
 }

@@ -6,7 +6,11 @@ use std::str::Chars;
 
 use crate::Error;
 
-use super::small::small_y;
+use super::{
+    unexpected_char_error,
+    unexpected_end_of_string,
+    small::small_y,
+};
 
 pub fn g(hiragana: &mut String, characters: &mut Enumerate<Chars>) -> Result<(), Error> {
     match characters.next() {
@@ -19,8 +23,8 @@ pub fn g(hiragana: &mut String, characters: &mut Enumerate<Chars>) -> Result<(),
             hiragana.push('ぎ');
             small_y(hiragana, characters)?;
         }
-        Some((i, c)) => return Err(format!("character at {} not allowed: {}", i, c)),
-        None => return Err(String::from("'k' must be followed by a vowel")),
+        Some((i, c)) => return Err(unexpected_char_error(i, c)),
+        None => return Err(unexpected_end_of_string()),
     }
     Ok(())
 }
