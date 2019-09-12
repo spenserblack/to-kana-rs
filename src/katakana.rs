@@ -54,7 +54,7 @@ pub fn kata(s: &str) -> Result {
     while let Some((i, c)) = characters.next() {
         if let Some((_, c2)) = characters.peek() {
             if c == *c2 && c != 'n' {
-                katakana.push('ッ');
+                katakana.push(small::TSU);
                 continue;
             }
         }
