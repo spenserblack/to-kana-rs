@@ -27,6 +27,7 @@ mod v;
 mod m;
 mod y;
 mod r;
+mod w;
 mod small;
 
 /// Converts an English alphabet string to Hiragana
@@ -89,6 +90,7 @@ pub fn hira(s: &str) -> Result {
             'm' => m::m(&mut hiragana, &mut characters)?,
             'y' => y::y(&mut hiragana, &mut characters)?,
             'r' => r::r(&mut hiragana, &mut characters)?,
+            'w' => w::w(&mut hiragana, &mut characters)?,
             'x' => small(&mut hiragana, &mut characters)?,
             // "ka" => "か",
             // "ki" => "き",
