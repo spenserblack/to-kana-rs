@@ -30,6 +30,18 @@ pub fn t(hiragana: &mut String, characters: &mut Enumerate<Chars>) -> Result<(),
                 None => return Err(unexpected_end_of_string()),
             }
         }
+        Some((_, 'h')) => {
+            hiragana.push('て');
+            match characters.next() {
+                Some((_, 'a')) => hiragana.push(small::YA),
+                Some((_, 'u')) => hiragana.push(small::YU),
+                Some((_, 'o')) => hiragana.push(small::YO),
+                Some((_, 'i')) => hiragana.push(small::I),
+                Some((_, 'e')) => hiragana.push(small::E),
+                Some((i, c)) => return Err(unexpected_char_error(i, c)),
+                None => return Err(unexpected_end_of_string()),
+            }
+        }
         Some((_, 's')) => {
             hiragana.push('つ');
             match characters.next() {
