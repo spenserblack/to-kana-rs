@@ -19,6 +19,7 @@ pub const O: char = 'ぉ';
 pub const YA: char = 'ゃ';
 pub const YU: char = 'ゅ';
 pub const YO: char = 'ょ';
+pub const TSU: char = 'っ';
 
 
 pub fn small(hiragana: &mut String, characters: &mut Enumerate<Chars>) -> Result<(), Error> {
@@ -29,6 +30,20 @@ pub fn small(hiragana: &mut String, characters: &mut Enumerate<Chars>) -> Result
         Some((_, 'e')) => hiragana.push(E),
         Some((_, 'o')) => hiragana.push(O),
         Some((_, 'y')) => small_y(hiragana, characters)?,
+        Some((_, 't')) => {
+            match characters.next() {
+                Some((_, 'u')) => hiragana.push(TSU),
+                Some((_, 's')) => {
+                    match characters.next() {
+                        Some((_, 'u')) => hiragana.push(TSU),
+                        Some((i, c)) => return Err(unexpected_char_error(i, c)),
+                        None => return Err(unexpected_end_of_string()),
+                    }
+                }
+                Some((i, c)) => return Err(unexpected_char_error(i, c)),
+                None => return Err(unexpected_end_of_string()),
+            }
+        }
         Some((i, c)) => return Err(unexpected_char_error(i, c)),
         None => return Err(unexpected_end_of_string()),
     }
