@@ -21,14 +21,7 @@ pub fn d(hiragana: &mut String, characters: &mut Enumerate<Chars>) -> Result<(),
         Some((_, 'o')) => hiragana.push('ど'),
         Some((_, 'y')) => {
             hiragana.push('ぢ');
-            match characters.next() {
-                Some((_, 'a')) => hiragana.push(small::YA),
-                Some((_, 'u')) => hiragana.push(small::YU),
-                Some((_, 'o')) => hiragana.push(small::YO),
-                Some((_, 'e')) => hiragana.push(small::E),
-                Some((i, c)) => return Err(unexpected_char_error(i, c)),
-                None => return Err(unexpected_end_of_string()),
-            }
+            small_y(hiragana, characters)?;
         }
         Some((_, 'h')) => {
             hiragana.push('で');

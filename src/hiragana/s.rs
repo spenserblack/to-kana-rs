@@ -19,7 +19,11 @@ pub fn s(hiragana: &mut String, characters: &mut Enumerate<Chars>) -> Result<(),
         Some((_, 'u')) => hiragana.push('す'),
         Some((_, 'e')) => hiragana.push('せ'),
         Some((_, 'o')) => hiragana.push('そ'),
-        Some((_, 'y')) | Some((_, 'h')) => {
+        Some((_, 'y')) => {
+            hiragana.push('し');
+            small_y(hiragana, characters)?;
+        }
+        Some((_, 'h')) => {
             hiragana.push('し');
             match characters.next() {
                 Some((_, 'a')) => hiragana.push(small::YA),

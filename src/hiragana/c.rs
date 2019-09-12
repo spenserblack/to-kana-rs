@@ -14,7 +14,11 @@ use super::{
 
 pub fn c(hiragana: &mut String, characters: &mut Enumerate<Chars>) -> Result<(), Error> {
     match characters.next() {
-        Some((_, 'y')) | Some((_, 'h')) => {
+        Some((_, 'y')) => {
+            hiragana.push('ち');
+            small_y(hiragana, characters)?;
+        }
+        Some((_, 'h')) => {
             hiragana.push('ち');
             match characters.next() {
                 Some((_, 'a')) => hiragana.push(small::YA),

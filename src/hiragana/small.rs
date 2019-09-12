@@ -54,6 +54,7 @@ pub fn small_y(hiragana: &mut String, characters: &mut Enumerate<Chars>) -> Resu
     match characters.next() {
         Some((_, 'a')) => hiragana.push(YA),
         Some((_, 'u')) => hiragana.push(YU),
+        Some((_, 'e')) => hiragana.push(E),
         Some((_, 'o')) => hiragana.push(YO),
         Some((i, c)) => return Err(unexpected_char_error(i, c)),
         None => return Err(unexpected_end_of_string()),
