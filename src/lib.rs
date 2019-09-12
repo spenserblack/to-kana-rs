@@ -81,68 +81,9 @@ fn unexpected_end_of_string() -> Error {
     String::from("Unexpected end of string")
 }
 
-fn syllable_divider<'a>(s: &'a str) -> Vec<&'a str> {
-    const VOWELS: [&str;6] = [
-        "a",
-        "e",
-        "i",
-        "o",
-        "u",
-        "y", // Sometimes
-    ];
-    // const DIGITS: [char;10] = [
-    //     '1',
-    //     '2',
-    //     '3',
-    //     '4',
-    //     '5',
-    //     '6',
-    //     '7',
-    //     '8',
-    //     '9',
-    //     '0',
-    // ];
-    let mut vec = Vec::new();
-    let mut start_index = 0;
-    for (end_index, c) in s.char_indices() {
-        match c {
-            '-' | 'a' | 'e' | 'i' | 'o' | 'u' | ',' | '.' | '!' | '?' |
-            // TODO Make this prettier
-            '0' | '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9'=> {
-                vec.push(&s[start_index..=end_index]);
-                start_index = end_index + 1;
-            },
-            '\'' => {
-                // Works as long as preceding character is 'n'
-                // If it wasn't, then it's an invalid pattern
-                start_index = end_index + 1;
-            },
-            'n' => {
-                // if n and next char is not vowel, push n and continue
-                match s.get(end_index + 1..=end_index + 1) {
-                    Some(v) if VOWELS.contains(&v) => {},
-                    _ => {
-                        vec.push("n");
-                        start_index = end_index + 1;
-                    },
-                }
-            }
-            _ => {},
-        }
-    }
-    vec
-}
-
 #[cfg(test)]
 mod tests {
     use super::*;
-
-    #[test]
-    fn syllable_division() {
-        let syllables = syllable_divider("konbanha");
-
-        assert_eq!(vec!["ko", "n", "ba", "n", "ha"], syllables);
-    }
 
     #[test]
     fn comma() {

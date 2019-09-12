@@ -10,7 +10,6 @@ use crate::Error;
 use super::{
     unexpected_char_error,
     unexpected_end_of_string,
-    small::{self, small_y},
 };
 
 pub fn w(katakana: &mut String, characters: &mut Peekable<Enumerate<Chars>>) -> Result<(), Error> {

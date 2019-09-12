@@ -1,7 +1,5 @@
 use super::{
     Result,
-    SmallKana,
-    syllable_divider,
     unexpected_char_error,
     unexpected_end_of_string,
 };
@@ -103,26 +101,6 @@ pub fn hira(s: &str) -> Result {
         }
     }
     Ok(hiragana)
-}
-
-fn add_hira_little_tsu(s: &str) -> Result {
-    let mut chars = s.chars();
-    let first_char = chars.next().unwrap();
-    let next_char = chars.next().unwrap();
-    if first_char == next_char {
-        let main_hira = match hira(&s[1..]) {
-            Ok(s) => s,
-            Err(e) => return Err(e),
-        };
-        let s = format!(
-            "{}{}",
-            "っ",
-            main_hira,
-        );
-        return Ok(s);
-    } else {
-        return Err(format!("3+ hiragana char pattern not recognized: {}", s));
-    }
 }
 
 #[cfg(test)]

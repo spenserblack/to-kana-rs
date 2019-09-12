@@ -7,11 +7,7 @@ use std::str::Chars;
 
 use crate::Error;
 
-use super::{
-    unexpected_char_error,
-    unexpected_end_of_string,
-    small::small_y,
-};
+use super::small::small_y;
 
 pub fn n(hiragana: &mut String, characters: &mut Peekable<Enumerate<Chars>>) -> Result<(), Error> {
     match characters.peek() {

@@ -8,8 +8,6 @@ use std::str::Chars;
 use crate::Error;
 
 use super::{
-    unexpected_char_error,
-    unexpected_end_of_string,
     small::small_y,
 };
 

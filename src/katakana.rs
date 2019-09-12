@@ -1,7 +1,5 @@
 use super::{
     Result,
-    SmallKana,
-    syllable_divider,
     unexpected_char_error,
     unexpected_end_of_string,
 };
@@ -103,26 +101,6 @@ pub fn kata(s: &str) -> Result {
         }
     }
     Ok(katakana)
-}
-
-fn add_kata_little_tsu(s: &str) -> Result {
-    let mut chars = s.chars();
-    let first_char = chars.next().unwrap();
-    let next_char = chars.next().unwrap();
-    if first_char == next_char {
-        let main_kata = match kata(&s[1..]) {
-            Ok(s) => s,
-            Err(e) => return Err(e),
-        };
-        let s = format!(
-            "{}{}",
-            "ッ",
-            main_kata,
-        );
-        return Ok(s);
-    } else {
-        return Err(format!("3+ katakana char pattern not recognized: {}", s));
-    }
 }
 
 #[cfg(test)]
