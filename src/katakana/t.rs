@@ -15,17 +15,17 @@ use super::{
 
 pub fn t(katakana: &mut String, characters: &mut Peekable<Enumerate<Chars>>) -> Result<(), Error> {
     match characters.next() {
-        Some((_, 'a')) => katakana.push('た'),
-        Some((_, 'i')) => katakana.push('ち'),
-        Some((_, 'u')) => katakana.push('つ'),
-        Some((_, 'e')) => katakana.push('て'),
-        Some((_, 'o')) => katakana.push('と'),
+        Some((_, 'a')) => katakana.push('タ'),
+        Some((_, 'i')) => katakana.push('チ'),
+        Some((_, 'u')) => katakana.push('ツ'),
+        Some((_, 'e')) => katakana.push('テ'),
+        Some((_, 'o')) => katakana.push('ト'),
         Some((_, 'y')) => {
-            katakana.push('ち');
+            katakana.push('チ');
             small_y(katakana, characters)?;
         }
         Some((_, 'h')) => {
-            katakana.push('て');
+            katakana.push('テ');
             match characters.next() {
                 Some((_, 'a')) => katakana.push(small::YA),
                 Some((_, 'u')) => katakana.push(small::YU),
@@ -37,7 +37,7 @@ pub fn t(katakana: &mut String, characters: &mut Peekable<Enumerate<Chars>>) -> 
             }
         }
         Some((_, 's')) => {
-            katakana.push('つ');
+            katakana.push('ツ');
             match characters.next() {
                 Some((_, 'u')) => {},
                 Some((i, c)) => return Err(unexpected_char_error(i, c)),

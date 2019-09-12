@@ -12,15 +12,15 @@ use super::{
 
 use crate::Error;
 
-pub const A: char = 'ぁ';
-pub const I: char = 'ぃ';
-pub const U: char = 'ぅ';
-pub const E: char = 'ぇ';
-pub const O: char = 'ぉ';
-pub const YA: char = 'ゃ';
-pub const YU: char = 'ゅ';
-pub const YO: char = 'ょ';
-pub const TSU: char = 'っ';
+pub const A: char = 'ァ';
+pub const I: char = 'ィ';
+pub const U: char = 'ゥ';
+pub const E: char = 'ェ';
+pub const O: char = 'ォ';
+pub const YA: char = 'ャ';
+pub const YU: char = 'ュ';
+pub const YO: char = 'ョ';
+pub const TSU: char = 'ッ';
 
 
 pub fn small(katakana: &mut String, characters: &mut Peekable<Enumerate<Chars>>) -> Result<(), Error> {

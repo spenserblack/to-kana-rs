@@ -54,7 +54,7 @@ pub fn kata(s: &str) -> Result {
     while let Some((i, c)) = characters.next() {
         if let Some((_, c2)) = characters.peek() {
             if c == *c2 && c != 'n' {
-                katakana.push('っ');
+                katakana.push('ッ');
                 continue;
             }
         }
@@ -75,11 +75,11 @@ pub fn kata(s: &str) -> Result {
             '8' => katakana.push('８'),
             '9' => katakana.push('９'),
             '0' => katakana.push('０'),
-            'a' => katakana.push('あ'),
-            'i' => katakana.push('い'),
-            'u' => katakana.push('う'),
-            'e' => katakana.push('え'),
-            'o' => katakana.push('お'),
+            'a' => katakana.push('ア'),
+            'i' => katakana.push('イ'),
+            'u' => katakana.push('ウ'),
+            'e' => katakana.push('エ'),
+            'o' => katakana.push('オ'),
             'k' => k(&mut katakana, &mut characters)?,
             'g' => g(&mut katakana, &mut characters)?,
             's' => s::s(&mut katakana, &mut characters)?,

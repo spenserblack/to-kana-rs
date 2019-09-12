@@ -15,13 +15,13 @@ use super::{
 
 pub fn p(katakana: &mut String, characters: &mut Peekable<Enumerate<Chars>>) -> Result<(), Error> {
     match characters.next() {
-        Some((_, 'a')) => katakana.push('ぱ'),
-        Some((_, 'i')) => katakana.push('ぴ'),
-        Some((_, 'u')) => katakana.push('ぷ'),
-        Some((_, 'e')) => katakana.push('ぺ'),
-        Some((_, 'o')) => katakana.push('ぽ'),
+        Some((_, 'a')) => katakana.push('パ'),
+        Some((_, 'i')) => katakana.push('ピ'),
+        Some((_, 'u')) => katakana.push('プ'),
+        Some((_, 'e')) => katakana.push('ペ'),
+        Some((_, 'o')) => katakana.push('ポ'),
         Some((_, 'y')) => {
-            katakana.push('ぴ');
+            katakana.push('ピ');
             small_y(katakana, characters)?;
         }
         Some((i, c)) => return Err(unexpected_char_error(i, c)),

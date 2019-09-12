@@ -16,11 +16,11 @@ use super::{
 pub fn c(katakana: &mut String, characters: &mut Peekable<Enumerate<Chars>>) -> Result<(), Error> {
     match characters.next() {
         Some((_, 'y')) => {
-            katakana.push('ち');
+            katakana.push('チ');
             small_y(katakana, characters)?;
         }
         Some((_, 'h')) => {
-            katakana.push('ち');
+            katakana.push('チ');
             match characters.next() {
                 Some((_, 'a')) => katakana.push(small::YA),
                 Some((_, 'u')) => katakana.push(small::YU),

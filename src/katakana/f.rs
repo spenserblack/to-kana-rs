@@ -14,7 +14,7 @@ use super::{
 };
 
 pub fn f(katakana: &mut String, characters: &mut Peekable<Enumerate<Chars>>) -> Result<(), Error> {
-    katakana.push('ふ');
+    katakana.push('フ');
     match characters.next() {
         Some((_, 'a')) => katakana.push(small::A),
         Some((_, 'i')) => katakana.push(small::I),
