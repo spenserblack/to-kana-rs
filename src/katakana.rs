@@ -56,6 +56,7 @@ pub fn kata(s: &str) -> Result {
             '\'' => {}
             ',' => katakana.push('、'),
             '.' => katakana.push('。'),
+            '/' => katakana.push('・'),
             '!' => katakana.push('！'),
             '?' => katakana.push('？'),
             '-' => katakana.push('ー'),
@@ -247,5 +248,10 @@ mod tests {
     #[test]
     fn turn_katakana() {
         assert_eq!(Ok(String::from("ターン")), kata("ta-n"));
+    }
+
+    #[test]
+    fn nakaguro() {
+        assert_eq!(kata("okuto/katto"), Ok(String::from("オクト・カット")));
     }
 }

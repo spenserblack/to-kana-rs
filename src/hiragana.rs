@@ -56,6 +56,7 @@ pub fn hira(s: &str) -> Result {
             '\'' => {}
             ',' => hiragana.push('、'),
             '.' => hiragana.push('。'),
+            '/' => hiragana.push('・'),
             '!' => hiragana.push('！'),
             '?' => hiragana.push('？'),
             '-' => hiragana.push('ー'),
@@ -242,5 +243,10 @@ mod tests {
     fn hiragana_little_tsu() {
         assert_eq!(hira("tte"), Ok(String::from("って")));
         assert_eq!(hira("sshi"), Ok(String::from("っし")));
+    }
+
+    #[test]
+    fn nakaguro() {
+        assert_eq!(hira("okuto/katto"), Ok(String::from("おくと・かっと")));
     }
 }
