@@ -1,8 +1,5 @@
-use crate::{
-    has_softened_diacritic,
-    has_hardened_diacritic,
-};
 use crate::Result;
+use crate::{has_hardened_diacritic, has_softened_diacritic};
 
 /// Defines a type as being able to convert to half-width katakana.
 ///
@@ -110,6 +107,9 @@ mod tests {
 
     #[test]
     fn half_width_kakikukeko() {
-        assert_eq!("ｶﾞｷﾞｸﾞｹﾞｺﾞ", "ガギグゲゴ".half_width().unwrap());
+        assert_eq!(
+            "ｶﾞｷﾞｸﾞｹﾞｺﾞ",
+            "ガギグゲゴ".half_width().unwrap()
+        );
     }
 }

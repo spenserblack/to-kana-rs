@@ -1,16 +1,9 @@
-use std::iter::{
-    Enumerate,
-    Iterator,
-    Peekable,
-};
+use std::iter::{Enumerate, Iterator, Peekable};
 use std::str::Chars;
 
 use crate::Error;
 
-use super::{
-    unexpected_char_error,
-    unexpected_end_of_string,
-};
+use super::{unexpected_char_error, unexpected_end_of_string};
 
 pub fn w(katakana: &mut String, characters: &mut Peekable<Enumerate<Chars>>) -> Result<(), Error> {
     match characters.next() {

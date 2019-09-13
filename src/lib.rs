@@ -35,17 +35,17 @@
 //! assert_eq!("ｬ", "ya".kata().small().half_width().unwrap());
 //! ```
 
-pub use to_kana_trait::ToKana;
 pub use half_width::HalfWidth;
 pub use hiragana::hira;
 pub use katakana::kata;
 pub use small_kana::SmallKana;
+pub use to_kana_trait::ToKana;
 
-mod to_kana_trait;
 mod half_width;
 mod hiragana;
 mod katakana;
 mod small_kana;
+mod to_kana_trait;
 
 /// The type inside `Result::Err` returned by this library's functions
 pub type Error = String;
@@ -53,17 +53,12 @@ pub type Error = String;
 /// The Result type returned by this library's functions
 pub type Result = std::result::Result<String, Error>;
 
-const KATAKANA_SOFTENED_DIACRITICS: [char;21] = [
-    'ガ', 'ギ', 'グ', 'ゲ', 'ゴ',
-    'ザ', 'ジ', 'ズ', 'ゼ', 'ゾ',
-    'ダ', 'ヂ', 'ヅ', 'デ', 'ド',
-    'バ', 'ビ', 'ブ', 'ベ', 'ボ',
-    'ヴ',
+const KATAKANA_SOFTENED_DIACRITICS: [char; 21] = [
+    'ガ', 'ギ', 'グ', 'ゲ', 'ゴ', 'ザ', 'ジ', 'ズ', 'ゼ', 'ゾ', 'ダ', 'ヂ', 'ヅ',
+    'デ', 'ド', 'バ', 'ビ', 'ブ', 'ベ', 'ボ', 'ヴ',
 ];
 
-const KATAKANA_HARDENED_DIACRITICS: [char;5] = [
-    'パ', 'ピ', 'プ', 'ペ', 'ポ',
-];
+const KATAKANA_HARDENED_DIACRITICS: [char; 5] = ['パ', 'ピ', 'プ', 'ペ', 'ポ'];
 
 fn has_softened_diacritic(c: &char) -> bool {
     KATAKANA_SOFTENED_DIACRITICS.contains(c)

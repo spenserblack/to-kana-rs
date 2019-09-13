@@ -1,15 +1,9 @@
-use std::iter::{
-    Enumerate,
-    Iterator,
-    Peekable,
-};
+use std::iter::{Enumerate, Iterator, Peekable};
 use std::str::Chars;
 
 use crate::Error;
 
-use super::{
-    small::small_y,
-};
+use super::small::small_y;
 
 pub fn n(katakana: &mut String, characters: &mut Peekable<Enumerate<Chars>>) -> Result<(), Error> {
     match characters.peek() {

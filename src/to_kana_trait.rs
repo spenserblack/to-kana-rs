@@ -1,8 +1,4 @@
-use crate::{
-    hira,
-    kata,
-    Result,
-};
+use crate::{hira, kata, Result};
 
 /// Trait to make a type translatable to kana
 pub trait ToKana {

@@ -1,32 +1,28 @@
-use super::{
-    Result,
-    unexpected_char_error,
-    unexpected_end_of_string,
-};
+use super::{unexpected_char_error, unexpected_end_of_string, Result};
 
-use k::k;
 use g::g;
+use k::k;
 use small::small;
 
-mod k;
-mod g;
-mod s;
-mod z;
-mod j;
-mod t;
+mod b;
 mod c;
 mod d;
-mod n;
-mod h;
-mod b;
-mod p;
 mod f;
-mod v;
+mod g;
+mod h;
+mod j;
+mod k;
 mod m;
-mod y;
+mod n;
+mod p;
 mod r;
-mod w;
+mod s;
 mod small;
+mod t;
+mod v;
+mod w;
+mod y;
+mod z;
 
 /// Converts an English alphabet string to Hiragana
 ///
@@ -57,7 +53,7 @@ pub fn hira(s: &str) -> Result {
             }
         }
         match c {
-            '\'' => {},
+            '\'' => {}
             ',' => hiragana.push('、'),
             '.' => hiragana.push('。'),
             '!' => hiragana.push('！'),

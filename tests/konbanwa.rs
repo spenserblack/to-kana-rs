@@ -1,7 +1,4 @@
-use to_kana::{
-    hira,
-    kata,
-};
+use to_kana::{hira, kata};
 
 #[test]
 fn hiragana_konbanwa() {

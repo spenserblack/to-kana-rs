@@ -1,16 +1,11 @@
-use std::iter::{
-    Enumerate,
-    Iterator,
-    Peekable,
-};
+use std::iter::{Enumerate, Iterator, Peekable};
 use std::str::Chars;
 
 use crate::Error;
 
 use super::{
-    unexpected_char_error,
-    unexpected_end_of_string,
     small::{self, small_y},
+    unexpected_char_error, unexpected_end_of_string,
 };
 
 pub fn s(hiragana: &mut String, characters: &mut Peekable<Enumerate<Chars>>) -> Result<(), Error> {
@@ -31,7 +26,7 @@ pub fn s(hiragana: &mut String, characters: &mut Peekable<Enumerate<Chars>>) -> 
                 Some((_, 'u')) => hiragana.push(small::YU),
                 Some((_, 'o')) => hiragana.push(small::YO),
                 Some((_, 'e')) => hiragana.push(small::E),
-                Some((_, 'i')) => {},
+                Some((_, 'i')) => {}
                 Some((i, c)) => return Err(unexpected_char_error(i, c)),
                 None => return Err(unexpected_end_of_string()),
             }

@@ -1,15 +1,6 @@
-use clap::{
-    App,
-    Arg,
-    SubCommand,
-};
+use clap::{App, Arg, SubCommand};
 
-use to_kana::{
-    hira,
-    kata,
-    HalfWidth,
-    SmallKana,
-};
+use to_kana::{hira, kata, HalfWidth, SmallKana};
 
 const HIRA: &str = "hira";
 const KATA: &str = "kata";

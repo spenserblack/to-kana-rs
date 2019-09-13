@@ -1,8 +1,4 @@
-use std::iter::{
-    Enumerate,
-    Iterator,
-    Peekable,
-};
+use std::iter::{Enumerate, Iterator, Peekable};
 use std::str::Chars;
 
 use crate::Error;
