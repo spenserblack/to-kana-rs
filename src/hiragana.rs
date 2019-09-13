@@ -241,7 +241,10 @@ mod tests {
 
     #[test]
     fn nakaguro() {
-        assert_eq!(hira("okuto/katto"), Ok(String::from("おくと・かっと")));
+        assert_eq!(
+            hira("okuto/katto"),
+            Ok(String::from("おくと・かっと"))
+        );
     }
 
     #[test]

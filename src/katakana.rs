@@ -246,7 +246,10 @@ mod tests {
 
     #[test]
     fn nakaguro() {
-        assert_eq!(kata("okuto/katto"), Ok(String::from("オクト・カット")));
+        assert_eq!(
+            kata("okuto/katto"),
+            Ok(String::from("オクト・カット"))
+        );
     }
 
     #[test]
