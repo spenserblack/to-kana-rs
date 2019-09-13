@@ -63,6 +63,8 @@ pub fn kata(s: &str) -> Result {
             '!' => katakana.push('！'),
             '?' => katakana.push('？'),
             '-' => katakana.push('ー'),
+            '[' => katakana.push('「'),
+            ']' => katakana.push('」'),
             '1' => katakana.push('１'),
             '2' => katakana.push('２'),
             '3' => katakana.push('３'),
