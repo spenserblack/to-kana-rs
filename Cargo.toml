@@ -33,4 +33,4 @@ harness = false
 [badges]
 is-it-maintained-issue-resolution = { repository = "spenserblack/to-kana-rs" }
 is-it-maintained-open-issues = { repository = "spenserblack/to-kana-rs" }
-maintenance = { status = "actively-maintained" }
+maintenance = { status = "actively-developed" }
