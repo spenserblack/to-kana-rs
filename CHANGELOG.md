@@ -1,6 +1,8 @@
 # Changelog
 
 ## [Unreleased](https://github.com/spenserblack/to-kana-rs/compare/v0.5.0...master)
+### Added
+- Nakaguro (`・`)
 
 ## [0.5.0] 2019/09/13
 ### Added
