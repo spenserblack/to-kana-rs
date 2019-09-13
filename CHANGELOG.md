@@ -6,6 +6,7 @@
 ### Added
 - Arabic numeral (0-9) conversion
 - `ぢゃ`, `ぢゅ`, `ぢぇ`, `ぢょ` via `"dy_"`
+- Quotes (`"「"` and `"」"`)
 
 ### Fixed
 - Performance boost (over 50% less time taken according to benches)
