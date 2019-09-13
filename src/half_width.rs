@@ -18,8 +18,8 @@ impl HalfWidth for &str {
     fn half_width(self) -> Result {
         let mut s = String::new();
         for c in self.chars() {
-            let has_softened_diacritic = has_softened_diacritic(&c);
-            let has_hardened_diacritic = has_hardened_diacritic(&c);
+            let has_softened_diacritic = has_softened_diacritic(c);
+            let has_hardened_diacritic = has_hardened_diacritic(c);
             let c = match c {
                 'ー' => 'ｰ',
                 'ア' => 'ｱ',

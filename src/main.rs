@@ -29,13 +29,12 @@ fn main() {
             .about("converts to katakana")
             .arg(half_arg)
             .arg(str_arg.clone());
-        let app = App::new("to-kana")
+        App::new("to-kana")
             .version("0.5.0")
             .about("Converts English lettering to kana")
             .subcommand(hira_subcommand)
             .subcommand(kata_subcommand)
-            .arg(small_arg);
-        app
+            .arg(small_arg)
     };
     let matches = app.get_matches();
     let small_kana = matches.is_present(SMALL);

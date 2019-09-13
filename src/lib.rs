@@ -60,12 +60,12 @@ const KATAKANA_SOFTENED_DIACRITICS: [char; 21] = [
 
 const KATAKANA_HARDENED_DIACRITICS: [char; 5] = ['パ', 'ピ', 'プ', 'ペ', 'ポ'];
 
-fn has_softened_diacritic(c: &char) -> bool {
-    KATAKANA_SOFTENED_DIACRITICS.contains(c)
+fn has_softened_diacritic(c: char) -> bool {
+    KATAKANA_SOFTENED_DIACRITICS.contains(&c)
 }
 
-fn has_hardened_diacritic(c: &char) -> bool {
-    KATAKANA_HARDENED_DIACRITICS.contains(c)
+fn has_hardened_diacritic(c: char) -> bool {
+    KATAKANA_HARDENED_DIACRITICS.contains(&c)
 }
 
 fn unexpected_char_error(i: usize, c: char) -> Error {
