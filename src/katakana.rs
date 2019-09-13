@@ -254,4 +254,9 @@ mod tests {
     fn nakaguro() {
         assert_eq!(kata("okuto/katto"), Ok(String::from("オクト・カット")));
     }
+
+    #[test]
+    fn many_vowels() {
+        assert_eq!(kata("saaaa"), Ok(String::from("サアアア")));
+    }
 }

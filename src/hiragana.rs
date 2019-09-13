@@ -249,4 +249,9 @@ mod tests {
     fn nakaguro() {
         assert_eq!(hira("okuto/katto"), Ok(String::from("おくと・かっと")));
     }
+
+    #[test]
+    fn many_vowels() {
+        assert_eq!(hira("saaaa"), Ok(String::from("さあああ")));
+    }
 }
