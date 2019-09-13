@@ -4,6 +4,9 @@
 ### Added
 - Nakaguro (`・`)
 
+### Fixed
+- `っ` and `ッ` appearing when vowel repeated
+
 ## [0.5.0] 2019/09/13
 ### Added
 - Arabic numeral (0-9) conversion
