@@ -39,6 +39,10 @@ pub fn t(katakana: &mut String, characters: &mut Peekable<Enumerate<Chars>>) -> 
                 None => return Err(unexpected_end_of_string()),
             }
         }
+        Some((_, 't')) => {
+            katakana.push('ッ');
+            t(katakana, characters)?;
+        }
         Some((i, c)) => return Err(unexpected_char_error(i, c)),
         None => return Err(unexpected_end_of_string()),
     }

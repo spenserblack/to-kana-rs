@@ -46,12 +46,6 @@ pub fn kata(s: &str) -> Result {
     let mut characters = s.chars().enumerate().peekable();
 
     while let Some((i, c)) = characters.next() {
-        if let Some((_, c2)) = characters.peek() {
-            if c == *c2 && c != 'n' {
-                katakana.push(small::TSU);
-                continue;
-            }
-        }
         match c {
             '\'' => {}
             ',' => katakana.push('、'),

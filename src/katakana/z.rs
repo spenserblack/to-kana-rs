@@ -16,6 +16,10 @@ pub fn z(katakana: &mut String, characters: &mut Peekable<Enumerate<Chars>>) -> 
             katakana.push('ジ');
             small_y(katakana, characters)?;
         }
+        Some((_, 'z')) => {
+            katakana.push('ッ');
+            z(katakana, characters)?;
+        }
         Some((i, c)) => return Err(unexpected_char_error(i, c)),
         None => return Err(unexpected_end_of_string()),
     }
