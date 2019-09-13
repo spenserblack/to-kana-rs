@@ -63,6 +63,8 @@ pub fn hira(s: &str) -> Result {
             '!' => hiragana.push('！'),
             '?' => hiragana.push('？'),
             '-' => hiragana.push('ー'),
+            '[' => hiragana.push('「'),
+            ']' => hiragana.push('」'),
             '1' => hiragana.push('１'),
             '2' => hiragana.push('２'),
             '3' => hiragana.push('３'),
