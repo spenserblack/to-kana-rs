@@ -16,6 +16,10 @@ pub fn m(hiragana: &mut String, characters: &mut Peekable<Enumerate<Chars>>) -> 
             hiragana.push('み');
             small_y(hiragana, characters)?;
         }
+        Some((_, 'm')) => {
+            hiragana.push('っ');
+            m(hiragana, characters)?;
+        }
         Some((i, c)) => return Err(unexpected_char_error(i, c)),
         None => return Err(unexpected_end_of_string()),
     }

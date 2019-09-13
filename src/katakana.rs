@@ -46,12 +46,6 @@ pub fn kata(s: &str) -> Result {
     let mut characters = s.chars().enumerate().peekable();
 
     while let Some((i, c)) = characters.next() {
-        if let Some((_, c2)) = characters.peek() {
-            if c == *c2 && c != 'n' {
-                katakana.push(small::TSU);
-                continue;
-            }
-        }
         match c {
             '\'' => {}
             ',' => katakana.push('、'),
@@ -253,5 +247,10 @@ mod tests {
     #[test]
     fn nakaguro() {
         assert_eq!(kata("okuto/katto"), Ok(String::from("オクト・カット")));
+    }
+
+    #[test]
+    fn many_vowels() {
+        assert_eq!(kata("saaaa"), Ok(String::from("サアアア")));
     }
 }

@@ -6,6 +6,11 @@ use crate::Error;
 use super::{small, unexpected_char_error, unexpected_end_of_string};
 
 pub fn f(katakana: &mut String, characters: &mut Peekable<Enumerate<Chars>>) -> Result<(), Error> {
+    if let Some((_, 'f')) = characters.peek() {
+        characters.next();
+        katakana.push('ッ');
+        return f(katakana, characters);
+    }
     katakana.push('フ');
     match characters.next() {
         Some((_, 'a')) => katakana.push(small::A),

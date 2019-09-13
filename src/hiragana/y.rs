@@ -10,6 +10,10 @@ pub fn y(hiragana: &mut String, characters: &mut Peekable<Enumerate<Chars>>) -> 
         Some((_, 'a')) => hiragana.push('や'),
         Some((_, 'u')) => hiragana.push('ゆ'),
         Some((_, 'o')) => hiragana.push('よ'),
+        Some((_, 'y')) => {
+            hiragana.push('っ');
+            y(hiragana, characters)?;
+        }
         Some((i, c)) => return Err(unexpected_char_error(i, c)),
         None => return Err(unexpected_end_of_string()),
     }

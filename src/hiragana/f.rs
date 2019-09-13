@@ -6,6 +6,11 @@ use crate::Error;
 use super::{small, unexpected_char_error, unexpected_end_of_string};
 
 pub fn f(hiragana: &mut String, characters: &mut Peekable<Enumerate<Chars>>) -> Result<(), Error> {
+    if let Some((_, 'f')) = characters.peek() {
+        characters.next();
+        hiragana.push('っ');
+        return f(hiragana, characters);
+    }
     hiragana.push('ふ');
     match characters.next() {
         Some((_, 'a')) => hiragana.push(small::A),
