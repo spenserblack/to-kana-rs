@@ -1,6 +1,8 @@
 # Changelog
 
-## [Unreleased](https://github.com/spenserblack/to-kana-rs/compare/v0.4.0...master)
+## [Unreleased](https://github.com/spenserblack/to-kana-rs/compare/v0.5.0...master)
+
+## [0.5.0] 2019/09/13
 ### Added
 - Arabic numeral (0-9) conversion
 - `ぢゃ`, `ぢゅ`, `ぢぇ`, `ぢょ` via `"dy_"`
