@@ -1,6 +1,8 @@
 # Changelog
 
-## [Unreleased](https://github.com/spenserblack/to-kana-rs/compare/v0.5.0...master)
+## [Unreleased](https://github.com/spenserblack/to-kana-rs/compare/v0.5.1...master)
+
+## [0.5.1] 2019/09/13
 ### Added
 - Nakaguro (`・`)
 
@@ -52,6 +54,7 @@
 ### Added
 - Basic Hiragana and Katakana (no diagraphs or diacritics)
 
+[0.5.1]: https://github.com/spenserblack/to-kana-rs/compare/v0.5.0...v0.5.1
 [0.5.0]: https://github.com/spenserblack/to-kana-rs/compare/v0.4.0...v0.5.0
 [0.4.0]: https://github.com/spenserblack/to-kana-rs/compare/v0.3.0...v0.4.0
 [0.3.0]: https://github.com/spenserblack/to-kana-rs/compare/v0.2.0...v0.3.0
