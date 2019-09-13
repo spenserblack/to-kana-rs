@@ -41,9 +41,13 @@ pub use katakana::kata;
 pub use small_kana::SmallKana;
 pub use to_kana_trait::ToKana;
 
+pub mod fmt;
 mod half_width;
 mod hiragana;
 mod katakana;
+
+#[macro_use]
+mod macros;
 mod small_kana;
 mod to_kana_trait;
 
