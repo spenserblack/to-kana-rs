@@ -1,8 +1,32 @@
 use super::{
     Result,
-    SmallKana,
-    syllable_divider,
+    unexpected_char_error,
+    unexpected_end_of_string,
 };
+
+use k::k;
+use g::g;
+use small::small;
+
+mod k;
+mod g;
+mod s;
+mod z;
+mod j;
+mod t;
+mod c;
+mod d;
+mod n;
+mod h;
+mod b;
+mod p;
+mod f;
+mod v;
+mod m;
+mod y;
+mod r;
+mod w;
+mod small;
 
 /// Converts an English alphabet string to Hiragana
 ///
@@ -23,177 +47,60 @@ use super::{
 /// ```
 pub fn hira(s: &str) -> Result {
     let mut hiragana = String::new();
+    let mut characters = s.chars().enumerate().peekable();
 
-    for s in syllable_divider(s) {
-        let kana: &str = match s {
-            "," => "、",
-            "." => "。",
-            "!" => "！",
-            "?" => "？",
-            "-" => "ー",
-            "1" => "１",
-            "2" => "２",
-            "3" => "３",
-            "4" => "４",
-            "5" => "５",
-            "6" => "６",
-            "7" => "７",
-            "8" => "８",
-            "9" => "９",
-            "0" => "０",
-            "a" => "あ",
-            "i" => "い",
-            "u" => "う",
-            "e" => "え",
-            "o" => "お",
-            "ka" => "か",
-            "ki" => "き",
-            "ku" => "く",
-            "ke" => "け",
-            "ko" => "こ",
-            "kya" => "きゃ",
-            "kyu" => "きゅ",
-            "kyo" => "きょ",
-            "ga" => "が",
-            "gi" => "ぎ",
-            "gu" => "ぐ",
-            "ge" => "げ",
-            "go" => "ご",
-            "gya" => "ぎゃ",
-            "gyu" => "ぎゅ",
-            "gyo" => "ぎょ",
-            "sa" => "さ",
-            "si" | "shi" => "し",
-            "su" => "す",
-            "se" => "せ",
-            "so" => "そ",
-            "sha" => "しゃ",
-            "shu" => "しゅ",
-            "she" => "しぇ",
-            "sho" => "しょ",
-            "za" => "ざ",
-            "zi" | "ji" => "じ",
-            "zu" => "ず",
-            "ze" => "ぜ",
-            "zo" => "ぞ",
-            "ja" => "じゃ",
-            "ju" => "じゅ",
-            "je" => "じぇ",
-            "jo" => "じょ",
-            "ta" => "た",
-            "ti" | "chi" => "ち",
-            "tu" | "tsu" => "つ",
-            "te" => "て",
-            "to" => "と",
-            "cha" => "ちゃ",
-            "chu" => "ちゅ",
-            "che" => "ちぇ",
-            "cho" => "ちょ",
-            "thi" => "てぃ",
-            "thu" => "てゅ",
-            "da" => "だ",
-            "di" => "ぢ",
-            "du" => "づ",
-            "de" => "で",
-            "do" => "ど",
-            "dhi" => "でぃ",
-            "dhu" => "でゅ",
-            "na" => "な",
-            "ni" => "に",
-            "nu" => "ぬ",
-            "ne" => "ね",
-            "no" => "の",
-            "nya" => "にゃ",
-            "nyu" => "にゅ",
-            "nyo" => "にょ",
-            "ha" => "は",
-            "hi" => "ひ",
-            "hu" => "ふ",
-            "he" => "へ",
-            "ho" => "ほ",
-            "hya" => "ひゃ",
-            "hyu" => "ひゅ",
-            "hyo" => "ひょ",
-            "ba" => "ば",
-            "bi" => "び",
-            "bu" => "ぶ",
-            "be" => "べ",
-            "bo" => "ぼ",
-            "bya" => "びゃ",
-            "byu" => "びゅ",
-            "byo" => "びょ",
-            "pa" => "ぱ",
-            "pi" => "ぴ",
-            "pu" => "ぷ",
-            "pe" => "ぺ",
-            "po" => "ぽ",
-            "pya" => "ぴゃ",
-            "pyu" => "ぴゅ",
-            "pyo" => "ぴょ",
-            "fa" => "ふぁ",
-            "fi" => "ふぃ",
-            "fe" => "ふぇ",
-            "fo" => "ふぉ",
-            "va" => "ゔぁ",
-            "vi" => "ゔぃ",
-            "vu" => "ゔ",
-            "ve" => "ゔぇ",
-            "vo" => "ゔぉ",
-            "ma" => "ま",
-            "mi" => "み",
-            "mu" => "む",
-            "me" => "め",
-            "mo" => "も",
-            "mya" => "みゃ",
-            "myu" => "みゅ",
-            "myo" => "みょ",
-            "ya" => "や",
-            "yu" => "ゆ",
-            "yo" => "よ",
-            "ra" => "ら",
-            "ri" => "り",
-            "ru" => "る",
-            "re" => "れ",
-            "ro" => "ろ",
-            "rya" => "りゃ",
-            "ryu" => "りゅ",
-            "ryo" => "りょ",
-            "wa" => "わ",
-            "wo" => "を",
-            "n" => "ん",
-            s if s.starts_with('x') && s.len() > 1 => {
-                hiragana.push_str(&hira(&s[1..]).small()?);
+    while let Some((i, c)) = characters.next() {
+        if let Some((_, c2)) = characters.peek() {
+            if c == *c2 && c != 'n' {
+                hiragana.push(small::TSU);
                 continue;
-            },
-            s if s.len() > 2 => {
-                hiragana.push_str(&add_hira_little_tsu(s)?);
-                continue;
-            },
-            _ => return Err(format!("Pattern not recognized: {:?}", s)),
-        };
-        hiragana.push_str(kana);
+            }
+        }
+        match c {
+            '\'' => {},
+            ',' => hiragana.push('、'),
+            '.' => hiragana.push('。'),
+            '!' => hiragana.push('！'),
+            '?' => hiragana.push('？'),
+            '-' => hiragana.push('ー'),
+            '1' => hiragana.push('１'),
+            '2' => hiragana.push('２'),
+            '3' => hiragana.push('３'),
+            '4' => hiragana.push('４'),
+            '5' => hiragana.push('５'),
+            '6' => hiragana.push('６'),
+            '7' => hiragana.push('７'),
+            '8' => hiragana.push('８'),
+            '9' => hiragana.push('９'),
+            '0' => hiragana.push('０'),
+            'a' => hiragana.push('あ'),
+            'i' => hiragana.push('い'),
+            'u' => hiragana.push('う'),
+            'e' => hiragana.push('え'),
+            'o' => hiragana.push('お'),
+            'k' => k(&mut hiragana, &mut characters)?,
+            'g' => g(&mut hiragana, &mut characters)?,
+            's' => s::s(&mut hiragana, &mut characters)?,
+            'z' => z::z(&mut hiragana, &mut characters)?,
+            'j' => j::j(&mut hiragana, &mut characters)?,
+            't' => t::t(&mut hiragana, &mut characters)?,
+            'c' => c::c(&mut hiragana, &mut characters)?,
+            'd' => d::d(&mut hiragana, &mut characters)?,
+            'n' => n::n(&mut hiragana, &mut characters)?,
+            'h' => h::h(&mut hiragana, &mut characters)?,
+            'b' => b::b(&mut hiragana, &mut characters)?,
+            'p' => p::p(&mut hiragana, &mut characters)?,
+            'f' => f::f(&mut hiragana, &mut characters)?,
+            'v' => v::v(&mut hiragana, &mut characters)?,
+            'm' => m::m(&mut hiragana, &mut characters)?,
+            'y' => y::y(&mut hiragana, &mut characters)?,
+            'r' => r::r(&mut hiragana, &mut characters)?,
+            'w' => w::w(&mut hiragana, &mut characters)?,
+            'x' => small(&mut hiragana, &mut characters)?,
+            _ => return Err(unexpected_char_error(i, c)),
+        }
     }
     Ok(hiragana)
-}
-
-fn add_hira_little_tsu(s: &str) -> Result {
-    let mut chars = s.chars();
-    let first_char = chars.next().unwrap();
-    let next_char = chars.next().unwrap();
-    if first_char == next_char {
-        let main_hira = match hira(&s[1..]) {
-            Ok(s) => s,
-            Err(e) => return Err(e),
-        };
-        let s = format!(
-            "{}{}",
-            "っ",
-            main_hira,
-        );
-        return Ok(s);
-    } else {
-        return Err(format!("3+ hiragana char pattern not recognized: {}", s));
-    }
 }
 
 #[cfg(test)]

@@ -1,8 +1,32 @@
 use super::{
     Result,
-    SmallKana,
-    syllable_divider,
+    unexpected_char_error,
+    unexpected_end_of_string,
 };
+
+use k::k;
+use g::g;
+use small::small;
+
+mod k;
+mod g;
+mod s;
+mod z;
+mod j;
+mod t;
+mod c;
+mod d;
+mod n;
+mod h;
+mod b;
+mod p;
+mod f;
+mod v;
+mod m;
+mod y;
+mod r;
+mod w;
+mod small;
 
 /// Converts an English alphabet string to Katakana
 ///
@@ -23,177 +47,60 @@ use super::{
 /// ```
 pub fn kata(s: &str) -> Result {
     let mut katakana = String::new();
+    let mut characters = s.chars().enumerate().peekable();
 
-    for s in syllable_divider(s) {
-        let kana: &str = match s {
-            "," => "、",
-            "." => "。",
-            "!" => "！",
-            "?" => "？",
-            "-" => "ー",
-            "1" => "１",
-            "2" => "２",
-            "3" => "３",
-            "4" => "４",
-            "5" => "５",
-            "6" => "６",
-            "7" => "７",
-            "8" => "８",
-            "9" => "９",
-            "0" => "０",
-            "a" => "ア",
-            "i" => "イ",
-            "u" => "ウ",
-            "e" => "エ",
-            "o" => "オ",
-            "ka" => "カ",
-            "ki" => "キ",
-            "ku" => "ク",
-            "ke" => "ケ",
-            "ko" => "コ",
-            "kya" => "キャ",
-            "kyu" => "キュ",
-            "kyo" => "キョ",
-            "ga" => "ガ",
-            "gi" => "ギ",
-            "gu" => "グ",
-            "ge" => "ゲ",
-            "go" => "ゴ",
-            "gya" => "ギャ",
-            "gyu" => "ギュ",
-            "gyo" => "ギョ",
-            "sa" => "サ",
-            "si" | "shi" => "シ",
-            "su" => "ス",
-            "se" => "セ",
-            "so" => "ソ",
-            "sha" => "シャ",
-            "shu" => "シュ",
-            "she" => "シェ",
-            "sho" => "ショ",
-            "za" => "ザ",
-            "zi" | "ji" => "ジ",
-            "zu" => "ズ",
-            "ze" => "ゼ",
-            "zo" => "ゾ",
-            "ja" => "ジャ",
-            "ju" => "ジュ",
-            "je" => "ジェ",
-            "jo" => "ジョ",
-            "ta" => "タ",
-            "ti" | "chi" => "チ",
-            "tu" | "tsu" => "ツ",
-            "te" => "テ",
-            "to" => "ト",
-            "cha" => "チャ",
-            "chu" => "チュ",
-            "che" => "チェ",
-            "cho" => "チョ",
-            "thi" => "ティ",
-            "thu" => "テュ",
-            "da" => "ダ",
-            "di" => "ヂ",
-            "du" => "ヅ",
-            "de" => "デ",
-            "do" => "ド",
-            "dhi" => "ディ",
-            "dhu" => "デュ",
-            "na" => "ナ",
-            "ni" => "ニ",
-            "nu" => "ヌ",
-            "ne" => "ネ",
-            "no" => "ノ",
-            "nya" => "ニャ",
-            "nyu" => "ニュ",
-            "nyo" => "ニョ",
-            "ha" => "ハ",
-            "hi" => "ヒ",
-            "hu" | "fu" => "フ",
-            "he" => "ヘ",
-            "ho" => "ホ",
-            "hya" => "ヒャ",
-            "hyu" => "ヒュ",
-            "hyo" => "ヒョ",
-            "ba" => "バ",
-            "bi" => "ビ",
-            "bu" => "ブ",
-            "be" => "ベ",
-            "bo" => "ボ",
-            "bya" => "ビャ",
-            "byu" => "ビュ",
-            "byo" => "ビョ",
-            "pa" => "パ",
-            "pi" => "ピ",
-            "pu" => "プ",
-            "pe" => "ペ",
-            "po" => "ポ",
-            "pya" => "ピャ",
-            "pyu" => "ピュ",
-            "pyo" => "ピョ",
-            "fa" => "ファ",
-            "fi" => "フィ",
-            "fe" => "フェ",
-            "fo" => "フォ",
-            "va" => "ヴァ",
-            "vi" => "ヴィ",
-            "vu" => "ヴ",
-            "ve" => "ヴェ",
-            "vo" => "ヴォ",
-            "ma" => "マ",
-            "mi" => "ミ",
-            "mu" => "ム",
-            "me" => "メ",
-            "mo" => "モ",
-            "mya" => "ミャ",
-            "myu" => "ミュ",
-            "myo" => "ミョ",
-            "ya" => "ヤ",
-            "yu" => "ユ",
-            "yo" => "ヨ",
-            "ra" => "ラ",
-            "ri" => "リ",
-            "ru" => "ル",
-            "re" => "レ",
-            "ro" => "ロ",
-            "rya" => "リャ",
-            "ryu" => "リュ",
-            "ryo" => "リョ",
-            "wa" => "ワ",
-            "wo" => "ヲ",
-            "n" => "ン",
-            s if s.starts_with('x') && s.len() > 1 => {
-                katakana.push_str(&kata(&s[1..]).small()?);
+    while let Some((i, c)) = characters.next() {
+        if let Some((_, c2)) = characters.peek() {
+            if c == *c2 && c != 'n' {
+                katakana.push(small::TSU);
                 continue;
-            },
-            s if s.len() > 2 => {
-                katakana.push_str(&add_kata_little_tsu(s)?);
-                continue;
-            },
-            _ => return Err(format!("Pattern not recognized: {:?}", s)),
-        };
-        katakana.push_str(&kana);
+            }
+        }
+        match c {
+            '\'' => {},
+            ',' => katakana.push('、'),
+            '.' => katakana.push('。'),
+            '!' => katakana.push('！'),
+            '?' => katakana.push('？'),
+            '-' => katakana.push('ー'),
+            '1' => katakana.push('１'),
+            '2' => katakana.push('２'),
+            '3' => katakana.push('３'),
+            '4' => katakana.push('４'),
+            '5' => katakana.push('５'),
+            '6' => katakana.push('６'),
+            '7' => katakana.push('７'),
+            '8' => katakana.push('８'),
+            '9' => katakana.push('９'),
+            '0' => katakana.push('０'),
+            'a' => katakana.push('ア'),
+            'i' => katakana.push('イ'),
+            'u' => katakana.push('ウ'),
+            'e' => katakana.push('エ'),
+            'o' => katakana.push('オ'),
+            'k' => k(&mut katakana, &mut characters)?,
+            'g' => g(&mut katakana, &mut characters)?,
+            's' => s::s(&mut katakana, &mut characters)?,
+            'z' => z::z(&mut katakana, &mut characters)?,
+            'j' => j::j(&mut katakana, &mut characters)?,
+            't' => t::t(&mut katakana, &mut characters)?,
+            'c' => c::c(&mut katakana, &mut characters)?,
+            'd' => d::d(&mut katakana, &mut characters)?,
+            'n' => n::n(&mut katakana, &mut characters)?,
+            'h' => h::h(&mut katakana, &mut characters)?,
+            'b' => b::b(&mut katakana, &mut characters)?,
+            'p' => p::p(&mut katakana, &mut characters)?,
+            'f' => f::f(&mut katakana, &mut characters)?,
+            'v' => v::v(&mut katakana, &mut characters)?,
+            'm' => m::m(&mut katakana, &mut characters)?,
+            'y' => y::y(&mut katakana, &mut characters)?,
+            'r' => r::r(&mut katakana, &mut characters)?,
+            'w' => w::w(&mut katakana, &mut characters)?,
+            'x' => small(&mut katakana, &mut characters)?,
+            _ => return Err(unexpected_char_error(i, c)),
+        }
     }
     Ok(katakana)
-}
-
-fn add_kata_little_tsu(s: &str) -> Result {
-    let mut chars = s.chars();
-    let first_char = chars.next().unwrap();
-    let next_char = chars.next().unwrap();
-    if first_char == next_char {
-        let main_kata = match kata(&s[1..]) {
-            Ok(s) => s,
-            Err(e) => return Err(e),
-        };
-        let s = format!(
-            "{}{}",
-            "ッ",
-            main_kata,
-        );
-        return Ok(s);
-    } else {
-        return Err(format!("3+ katakana char pattern not recognized: {}", s));
-    }
 }
 
 #[cfg(test)]
