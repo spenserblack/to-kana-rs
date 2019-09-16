@@ -29,7 +29,7 @@ mod tests {
 
     #[test]
     fn to_kana_macro() {
-        let s = to_kana!("hiragana: {:h}, katakana: {:k}", "konnichiha", "konbanha").unwrap();
+        let s = to_kana!("hiragana: {:H}, katakana: {:K}", "konnichiha", "konbanha").unwrap();
         assert_eq!("hiragana: こんにちは, katakana: コンバンハ", s);
     }
 }
