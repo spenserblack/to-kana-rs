@@ -1,3 +1,4 @@
+use lazy_static::lazy_static;
 use regex::Regex;
 
 use super::{
@@ -8,10 +9,12 @@ use super::{
 };
 
 pub fn format_kana(format_str: &str, args: Vec<&str>) -> Result {
-    let format_finder = Regex::new(r"\{:.*\}").unwrap(); // TODO Use lazy_static to improve performance: https://docs.rs/regex/1.3.1/regex/#example-avoid-compiling-the-same-regex-in-a-loop
+    lazy_static! {
+        static ref FORMAT_FINDER: Regex = Regex::new(r"\{:.*\}").unwrap();
+    }
     let mut index: usize = 0;
     let mut out = String::from(format_str);
-    println!("Format finder: {:?}", format_finder.find(&out));
+    println!("Format finder: {:?}", FORMAT_FINDER.find(&out));
     panic!("Args not implemented: {:?}", args);
 }
 
