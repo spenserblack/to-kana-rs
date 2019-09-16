@@ -7,7 +7,7 @@
 ![License](https://img.shields.io/crates/l/to-kana)
 
 
-![GitHub Release Date](https://img.shields.io/github/release-date/spenserblack/to-kana-rs)
+[![GitHub Release Date](https://img.shields.io/github/release-date/spenserblack/to-kana-rs)](https://github.com/spenserblack/to-kana-rs/releases/latest)
 ![GitHub commits since latest release](https://img.shields.io/github/commits-since/spenserblack/to-kana-rs/latest)
 
 Converts English lettering to Kana.
