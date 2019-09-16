@@ -10,7 +10,7 @@ use super::{
 
 pub fn format_kana(format_str: &str, args: Vec<&str>) -> Result {
     lazy_static! {
-        static ref FORMAT_FINDER: Regex = Regex::new(r"\{:.*\}").unwrap();
+        static ref FORMAT_FINDER: Regex = Regex::new(r"\{:[A-z]+(/2)?\}").unwrap();
     }
     let mut index: usize = 0;
     let mut out = String::from(format_str);
