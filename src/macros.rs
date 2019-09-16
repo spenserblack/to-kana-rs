@@ -21,7 +21,7 @@
 /// - `:k/2` => Small, Half-width Katakana (ｧｨｩｪｫｬｭｮｯ)
 #[macro_export]
 macro_rules! to_kana {
-    ($format_str:tt, $($args:expr),*) => ($crate::fmt::format_kana($format_str, vec![$($args),*]))
+    ($format_str:tt, $($args:expr),* $(,)?) => ($crate::fmt::format_kana($format_str, vec![$($args),*]))
 }
 
 #[cfg(test)]
@@ -39,7 +39,7 @@ mod tests {
             "{:H},{:K},{:k/2}",
             "konnichiha",
             "konbanha",
-            "yayuyo"
+            "yayuyo",
         ).unwrap();
         assert_eq!("こんにちは,コンバンハ,ｬｭｮ", s);
     }
