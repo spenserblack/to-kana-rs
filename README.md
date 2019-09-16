@@ -19,6 +19,8 @@ Please see the [wiki](https://github.com/spenserblack/to-kana-rs/wiki) to get su
 ~~Check out [docs.rs](https://docs.rs/to-kana/)~~ Run `cargo doc --open` to get all available formats for `to_kana!`
 
 ```rust
+use to_kana::to_kana;
+
 // こんにちは、ワールド！
 let hello_world = to_kana!("{:H}{:K}", "konnichiha,", "wa-rudo!").unwrap();
 
