@@ -18,7 +18,10 @@ Please see the [wiki](https://github.com/spenserblack/to-kana-rs/wiki) to get su
 #### Using `to_kana!`
 Check out [docs.rs](https://docs.rs/to-kana/) to get all available formats for `to_kana!`
 ```rust
+// こんにちは、ワールド！
 let hello_world = to_kana!("{:H}{:K}", "konnichiha,", "wa-rudo!").unwrap();
+
+// Half-width ｶﾀｶﾅ works too!
 let half = to_kana!("Half-width {:K/2} works too!", "katakana").unwrap();
 ```
 
