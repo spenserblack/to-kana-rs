@@ -32,4 +32,15 @@ mod tests {
         let s = to_kana!("hiragana: {:H}, katakana: {:K}", "konnichiha", "konbanha").unwrap();
         assert_eq!("hiragana: こんにちは, katakana: コンバンハ", s);
     }
+
+    #[test]
+    fn to_kana_macro_3_args() {
+        let s = to_kana!(
+            "{:H},{:K},{:k/2}",
+            "konnichiha",
+            "konbanha",
+            "yayuyo"
+        ).unwrap();
+        assert_eq!("こんにちは,コンバンハ,ｬｭｮ", s);
+    }
 }
