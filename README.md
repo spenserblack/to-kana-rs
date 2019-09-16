@@ -30,14 +30,6 @@ let hello = "konnichiha,".hira().unwrap(); // Works on &str
 let world = String::from("wa-rudo!").kata().unwrap(); // And String!
 
 println!("{}{}", hello, world)); // こんにちは、ワールド！
-
-let rust = "[rasuto".kata().unwrap();
-let ga = "ga".hira().unwrap();
-let number_1 = "nanba-1]".kata().unwrap();
-let i_think = "toomoimasu.".hira().unwrap();
-
-// 「ラストがナンバー１」とおもいます。
-println!("{}{}{}{}", rust, ga, number_1, i_think);
 ```
 ```rust
 use to_kana::{
