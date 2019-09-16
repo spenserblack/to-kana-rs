@@ -5,6 +5,12 @@
 //! # Examples
 //!
 //! ```
+//! use to_kana::to_kana;
+//!
+//! let hello_world = to_kana!("{:H}{:K}", "konnichiha,", "wa-rudo!").unwrap();
+//! assert_eq!("こんにちは、ワールド！", hello_world);
+//! ```
+//! ```
 //! use to_kana::ToKana;
 //!
 //! let hello = "konnichiha,".hira().unwrap(); // Works on &str
@@ -41,9 +47,13 @@ pub use katakana::kata;
 pub use small_kana::SmallKana;
 pub use to_kana_trait::ToKana;
 
+pub mod fmt;
 mod half_width;
 mod hiragana;
 mod katakana;
+
+#[macro_use]
+mod macros;
 mod small_kana;
 mod to_kana_trait;
 
