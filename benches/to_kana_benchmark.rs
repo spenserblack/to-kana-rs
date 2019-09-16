@@ -56,6 +56,19 @@ fn half_width_kana_benchmark(c: &mut Criterion) {
         b.iter(|| half_width_conversion(black_box("コレハナガイストリング!")))
     });
 }
+fn macro_benchmark(c: &mut Criterion) {
+    c.bench_function("Simple Hiragana and Katakana combo", |b| {
+        b.iter(|| to_kana!("{:H}{:K}", black_box("hiragana"), black_box("katakana")))
+    });
+    c.bench_function("Complex format string", |b| {
+        b.iter(|| to_kana!(
+            "hiragana {:H} and katakana {:K} and small, half-width katakana {:k/2}",
+            black_box("hiragana"),
+            black_box("katakana"),
+            black_box("yayuyo")
+        ))
+    });
+}
 
 criterion_group!(
     benches,
@@ -63,5 +76,6 @@ criterion_group!(
     kata_benchmark,
     small_kana_benchmark,
     half_width_kana_benchmark,
+    macro_benchmark,
 );
 criterion_main!(benches);
