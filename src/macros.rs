@@ -18,7 +18,7 @@ mod tests {
 
     #[test]
     fn to_kana_macro() {
-        let s = to_kana!("konnichiha in hiragana: {:h}, konbanha in katakana: {:k}", "konnichiha", "konbanha");
-        // assert_eq!("konnichiha in hiragana: こんにちは, konbanha in katakana: コンバンハ", s);
+        let s = to_kana!("hiragana: {:h}, katakana: {:k}", "konnichiha", "konbanha").unwrap();
+        assert_eq!("hiragana: こんにちは, katakana: コンバンハ", s);
     }
 }
