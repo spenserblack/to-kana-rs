@@ -1,6 +1,8 @@
 # Changelog
 
 ## [Unreleased](https://github.com/spenserblack/to-kana-rs/compare/v0.5.1...master)
+### Added
+- `to_kana!` macro
 
 ## [0.5.1] 2019/09/13
 ### Added
