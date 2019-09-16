@@ -15,6 +15,14 @@ Please see the [wiki](https://github.com/spenserblack/to-kana-rs/wiki) to get su
 
 ## Basic Usage
 ### As Library
+#### Using `to_kana!`
+Check out [docs.rs](https://docs.rs/to-kana/) to get all available formats for `to_kana!`
+```rust
+let hello_world = to_kana!("{:H}{:K}", "konnichiha,", "wa-rudo!").unwrap();
+let half = to_kana!("Half-width {:K/2} works too!", "katakana").unwrap();
+```
+
+#### The Old Ways
 ```rust
 use to_kana::ToKana;
 
@@ -31,14 +39,12 @@ let i_think = "toomoimasu.".hira().unwrap();
 // 「ラストがナンバー１」とおもいます。
 println!("{}{}{}{}", rust, ga, number_1, i_think);
 ```
-Or, if you prefer the old way
 ```rust
 use to_kana::{
     hira, // Hiragana
     kata, // Katakana
 };
 
-// は is pronounced "wa" in this context, but is usually pronounced "ha"
 let hello = hira("konnichiha,").unwrap();
 let world = kata("wa-rudo!").unwrap();
 
