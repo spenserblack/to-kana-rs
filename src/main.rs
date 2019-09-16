@@ -30,7 +30,7 @@ fn main() {
             .arg(half_arg)
             .arg(str_arg.clone());
         App::new("to-kana")
-            .version("0.5.1")
+            .version("0.6.0")
             .about("Converts English lettering to kana")
             .subcommand(hira_subcommand)
             .subcommand(kata_subcommand)
