@@ -9,7 +9,7 @@
 /// ```
 #[macro_export]
 macro_rules! to_kana {
-    ($format_str:tt, $($args:tt)*) => (panic!("Macro not working yet!"));
+    ($format_str:tt, $($args:expr),*) => (panic!("Macro not working yet!"));
 }
 
 #[cfg(test)]
