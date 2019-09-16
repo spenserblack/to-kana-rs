@@ -8,7 +8,7 @@ use super::{
 };
 
 pub fn format_kana(format_str: &str, args: Vec<&str>) -> Result {
-    let format_finder = Regex::new(r"\{:[A-z]\}").unwrap(); // TODO Use lazy_static to improve performance
+    let format_finder = Regex::new(r"\{:.*\}").unwrap(); // TODO Use lazy_static to improve performance
     let mut index: usize = 0;
     let mut out = String::from(format_str);
     println!("Format finder: {:?}", format_finder.find(&out));
