@@ -5,6 +5,12 @@
 //! # Examples
 //!
 //! ```
+//! use to_kana::to_kana;
+//!
+//! let hello_world = to_kana!("{:H}{:K}", "konnichiha,", "wa-rudo!").unwrap();
+//! assert_eq!("こんにちは、ワールド！", hello_world);
+//! ```
+//! ```
 //! use to_kana::ToKana;
 //!
 //! let hello = "konnichiha,".hira().unwrap(); // Works on &str
