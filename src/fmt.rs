@@ -11,6 +11,12 @@ use super::{
     Result,
 };
 
+/// Uses a format string to convert arguments to their Kana counterparts.
+///
+/// It is recommended that you use the [`to_kana!`] macro instead, which will
+/// call this function.
+///
+/// [`to_kana!`]: ../macro.to_kana.html
 pub fn format_kana(format_str: &str, args: Vec<&str>) -> Result {
     lazy_static! {
         static ref FORMAT_FINDER: Regex = Regex::new(r"\{:[A-z]+(/2)?\}").unwrap();
