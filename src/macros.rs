@@ -18,7 +18,6 @@ macro_rules! to_kana {
 
 #[cfg(test)]
 mod tests {
-    use super::*;
 
     #[test]
     fn to_kana_macro() {
