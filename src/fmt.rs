@@ -1,5 +1,8 @@
 use lazy_static::lazy_static;
-use regex::Regex;
+use regex::{
+    Captures,
+    Regex,
+};
 
 use super::{
     ToKana,
@@ -13,9 +16,41 @@ pub fn format_kana(format_str: &str, args: Vec<&str>) -> Result {
         static ref FORMAT_FINDER: Regex = Regex::new(r"\{:[A-z]+(/2)?\}").unwrap();
     }
     let mut index: usize = 0;
-    let mut out = String::from(format_str);
-    println!("Format finder: {:?}", FORMAT_FINDER.find(&out));
-    panic!("Args not implemented: {:?}", args);
+    let mut error: Option<Result> = None;
+    let out = FORMAT_FINDER.replace_all(format_str, |caps: &Captures| {
+        println!("Captures: {:?}", caps); // TODO Remove
+        let input = if let Some(s) = args.get(index) {
+            index += 1;
+            s
+        } else {
+            error = Some(Err(format!("Too few arguments: {}", index)));
+            return String::new();
+        };
+        let conversion_attempt = match &caps[0] {
+            "{:H}" => input.hira(),
+            "{:K}" => input.kata(),
+            "{:h}" => input.hira().small(),
+            "{:k}" => input.kata().small(),
+            "{:K/2}" => input.kata().half_width(),
+            "{:k/2}" => input.kata().small().half_width(),
+            s => {
+                error = Some(Err(format!("Kana formatter not found: {}", s)));
+                return String::new();
+            }
+        };
+        match conversion_attempt {
+            Err(e) => {
+                error = Some(Err(e));
+                return String::new();
+            }
+            Ok(s) => s,
+        }
+    });
+    if let Some(error) = error {
+        error
+    } else {
+        Ok(out.to_string())
+    }
 }
 
 #[cfg(test)]
