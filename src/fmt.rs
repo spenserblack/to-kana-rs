@@ -25,7 +25,7 @@ mod tests {
     #[test]
     fn format_kana_test() {
         let s = format_kana("hiragana: {:H}, katakana: {:K}", vec!["konnichiha", "konbanha"]).unwrap();
-        assert_eq!("konnichiha in hiragana: こんにちは, konbanha in katakana: コンバンハ", s);
+        assert_eq!("hiragana: こんにちは, katakana: コンバンハ", s);
     }
 
     #[test]
