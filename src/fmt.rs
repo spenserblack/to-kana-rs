@@ -18,7 +18,6 @@ pub fn format_kana(format_str: &str, args: Vec<&str>) -> Result {
     let mut index: usize = 0;
     let mut error: Option<Result> = None;
     let out = FORMAT_FINDER.replace_all(format_str, |caps: &Captures| {
-        println!("Captures: {:?}", caps); // TODO Remove
         let input = if let Some(s) = args.get(index) {
             index += 1;
             s
