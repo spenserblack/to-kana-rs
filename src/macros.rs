@@ -4,8 +4,12 @@
 /// # Example
 ///
 /// ```
-/// let s = to_kana!("konnichiha in hiragana: {:h}, konbanha in katakana: {:k}", "konnichiha", "konbanha");
-/// assert_eq!("konnichiha in hiragana: こんにちは, konbanha in katakana: コンバンハ", s);
+/// use to_kana::to_kana;
+///
+/// assert_eq!(
+///     "ひらがな and カタカナ",
+///     to_kana!("{:H} and {:K}", "hiragana", "katakana").unwrap()
+/// );
 /// ```
 #[macro_export]
 macro_rules! to_kana {
