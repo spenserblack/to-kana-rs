@@ -1,4 +1,4 @@
-use clap::{App, Arg, SubCommand};
+use clap::{App, Arg, crate_version, SubCommand};
 
 use to_kana::{hira, kata, HalfWidth, SmallKana};
 
@@ -30,7 +30,7 @@ fn main() {
             .arg(half_arg)
             .arg(str_arg.clone());
         App::new("to-kana")
-            .version("0.6.0")
+            .version(crate_version!())
             .about("Converts English lettering to kana")
             .subcommand(hira_subcommand)
             .subcommand(kata_subcommand)
