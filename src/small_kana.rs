@@ -26,12 +26,12 @@ impl SmallKana for &str {
         let utf16: Vec<u16> = self
             .encode_utf16()
             .map(|u16char| match u16char {
-                0x3042...0x304A
-                | 0x3084...0x3088
+                0x3042..=0x304A
+                | 0x3084..=0x3088
                 | 0x3064
                 | 0x30C4
-                | 0x30A2...0x30AA
-                | 0x30E4...0x30E8
+                | 0x30A2..=0x30AA
+                | 0x30E4..=0x30E8
                     if u16char % 2 == 0 =>
                 {
                     u16char - 0x0001

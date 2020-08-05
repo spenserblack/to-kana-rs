@@ -1,6 +1,8 @@
 # Changelog
 
 ## [Unreleased](https://github.com/spenserblack/to-kana-rs/compare/v0.6.0...master)
+### Fixed
+- Deprecated `...` pattern match
 
 ## [0.6.0] 2019/09/16
 ### Added
