@@ -1,7 +1,6 @@
 # to-kana
 [![Crates.io](https://img.shields.io/crates/v/to-kana)](https://crates.io/crates/to-kana)
 [![docs.rs](https://docs.rs/to-kana/badge.svg)](https://docs.rs/to-kana/)
-[![Build Status](https://travis-ci.com/spenserblack/to-kana-rs.svg?branch=master)](https://travis-ci.com/spenserblack/to-kana-rs)
 ![Crates.io downloads of latest version](https://img.shields.io/crates/dv/to-kana)
 ![License](https://img.shields.io/crates/l/to-kana)
 
